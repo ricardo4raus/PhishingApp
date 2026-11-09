@@ -41,12 +41,12 @@
       <main class="container inhalt">
         <div class="spalte spalte--haupt">
           <p class="chip chip--lila start__thema">Training gegen Phishing</p>
-          <h1 class="start__titel">Erkennst du den Fake?</h1>
+          <h1 class="start__titel" tabindex="-1">Erkennst du den Fake?</h1>
           <p class="start__einleitung">
             Du siehst <span class="start__anzahl"></span> Nachrichten aus dem Alltag.
             Entscheide jeweils: echt oder Phishing? Danach erfährst du, woran man es erkennt.
           </p>
-          <ul class="chips">
+          <ul class="chips" role="list">
             <li class="chip start__chip-anzahl"></li>
             <li class="chip start__chip-dauer"></li>
             <li class="chip chip--lila">mit Erklärung</li>
@@ -115,11 +115,11 @@
             <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
             <span class="kontext__text"></span>
           </p>
-          <div class="situation__nachricht"></div>
+          <div class="situation__nachricht" tabindex="-1"></div>
         </div>
 
         <div class="spalte spalte--haupt situation__entscheidung">
-          <h1 class="situation__frage">Ist diese Nachricht echt oder Phishing?</h1>
+          <h1 class="situation__frage" tabindex="-1">Ist diese Nachricht echt oder Phishing?</h1>
           <p class="situation__tipp">
             <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
             Tipp: Achte auf Absender, Link und Zeitdruck.
@@ -168,7 +168,7 @@
                 <span class="resultat__einheit">richtig</span>
               </p>
             </div>
-            <h1 class="resultat__titel"></h1>
+            <h1 class="resultat__titel" tabindex="-1"></h1>
             <p class="resultat__text"></p>
           </div>
 
@@ -185,7 +185,7 @@
             </div>
             <div class="resultat__tipps">
               <h2 class="resultat__tipps-titel">Darauf solltest du achten</h2>
-              <ul class="chips resultat__tipps-liste"></ul>
+              <ul class="chips resultat__tipps-liste" role="list"></ul>
             </div>
             <div class="aktionen">
               <button class="button button--primaer resultat__nochmals" type="button">
@@ -199,7 +199,7 @@
         <section class="container antworten" aria-labelledby="antworten-titel">
           <h2 class="antworten__titel" id="antworten-titel">Deine Antworten</h2>
           <p class="antworten__hinweis">Öffne eine Situation, um die Nachricht nochmals zu sehen. Bei Fehlern steht, woran du es erkennst und wie du richtig reagierst.</p>
-          <ol class="antworten__liste"></ol>
+          <ol class="antworten__liste" role="list"></ol>
         </section>
       </main>
     </template>
@@ -234,7 +234,7 @@
     <template id="vorlage-erklaerung">
       <div class="erklaerung">
         <h3 class="erklaerung__titel"></h3>
-        <ol class="erklaerung__merkmale"></ol>
+        <ol class="erklaerung__merkmale" role="list"></ol>
         <div class="reaktion">
           <h3 class="reaktion__titel">So reagierst du richtig</h3>
           <ul class="reaktion__liste"></ul>
@@ -251,7 +251,7 @@
     </template>
 
     <template id="vorlage-linkvorschau">
-      <p class="linkvorschau" aria-live="polite" hidden>
+      <p class="linkvorschau" hidden>
         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
         <span class="linkvorschau__inhalt">
           <span class="linkvorschau__hinweis">Fahre über den Link oder tippe darauf, um zu sehen, wohin er wirklich führt.</span>
@@ -288,7 +288,7 @@
         </div>
         <p class="email__betreff"></p>
         <div class="email__kopf">
-          <span class="email__avatar"></span>
+          <span class="email__avatar" aria-hidden="true"></span>
           <div class="email__personen">
             <p class="email__absender"></p>
             <p class="email__adresse"></p>

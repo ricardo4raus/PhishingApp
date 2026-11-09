@@ -2,26 +2,26 @@ import { erstelleAusVorlage } from "../vorlagen.js";
 
 const AKTIV = "linkvorschau--aktiv";
 
+let naechsteVorschauNummer = 1;
+
 export function erstelleLink(link) {
   const knopf = document.createElement("button");
   knopf.type = "button";
   knopf.className = "link";
   knopf.textContent = link.text;
-  knopf.dataset.ziel = link.ziel;
   return knopf;
 }
 
 export function erstelleLinkVorschau() {
-  return erstelleAusVorlage("vorlage-linkvorschau").firstElementChild;
+  const vorschau = erstelleAusVorlage("vorlage-linkvorschau").firstElementChild;
+  vorschau.querySelector(".linkvorschau__ziel").id = `linkziel-${naechsteVorschauNummer}`;
+  naechsteVorschauNummer += 1;
+  return vorschau;
 }
 
 export function verbindeLinkVorschau(nachricht, vorschau) {
-  const ziel = vorschau.querySelector(".linkvorschau__ziel");
-
   function zeigeZiel(event) {
-    const link = event.target.closest(".link");
-    if (link) {
-      ziel.textContent = `Führt zu: ${link.dataset.ziel}`;
+    if (event.target.closest(".link")) {
       vorschau.classList.add(AKTIV);
     }
   }
@@ -39,8 +39,15 @@ export function verbindeLinkVorschau(nachricht, vorschau) {
   nachricht.addEventListener("focusout", zeigeHinweis);
 }
 
-export function bereiteLinkVorschauVor(vorschau, link) {
+export function bereiteLinkVorschauVor(nachricht, vorschau, link) {
+  const ziel = vorschau.querySelector(".linkvorschau__ziel");
+
   vorschau.hidden = !link;
   vorschau.classList.remove(AKTIV);
-  vorschau.querySelector(".linkvorschau__ziel").textContent = link ? `Führt zu: ${link.ziel}` : "";
+  ziel.textContent = link ? `Führt zu: ${link.ziel}` : "";
+
+  const knopf = nachricht.querySelector(".link");
+  if (knopf) {
+    knopf.setAttribute("aria-describedby", ziel.id);
+  }
 }

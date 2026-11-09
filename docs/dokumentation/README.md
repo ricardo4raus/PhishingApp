@@ -24,6 +24,7 @@ Sie dient als Nachschlagewerk und als Grundlage, um die Begleitdokumentation (Wo
 | [04_fluessiger-ablauf.md](04_fluessiger-ablauf.md) | Kein Neuaufbau pro Situation, animierter Fortschrittsbalken, kein Springen des Layouts | 4.3 Umsetzung (Problem und Lösung), 4.5 Tests |
 | [05_resultat-und-farbschema.md](05_resultat-und-farbschema.md) | Resultat-Bildschirm mit Bewertung und Tipps, Schalter für Hell-/Dunkelmodus | 4.3 Umsetzung, 5 Produkt, 4.5 Tests |
 | [06_antworten-im-resultat.md](06_antworten-im-resultat.md) | Alle Antworten im Resultat ansehen, Erklärung bei Fehlern | 4.3 Umsetzung, 5 Produkt, 4.5 Tests |
+| [07_code-review.md](07_code-review.md) | Code-Review: gefundene Fehler, Barrierefreiheit, Aufräumen, Texte | 4.5 Tests und Überarbeitung |
 
 ## Regeln für diese Dokumentation
 

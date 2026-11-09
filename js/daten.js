@@ -7,5 +7,11 @@ export async function ladeSituationen() {
     throw new Error(`Situationen konnten nicht geladen werden (Status ${serverAntwort.status})`);
   }
 
-  return serverAntwort.json();
+  const situationen = await serverAntwort.json();
+
+  if (!Array.isArray(situationen) || situationen.length === 0) {
+    throw new Error("Die Datei enthält keine Situationen");
+  }
+
+  return situationen;
 }

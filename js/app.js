@@ -16,6 +16,7 @@ const zustand = {
 function zeige(bildschirm) {
   app.replaceChildren(bildschirm);
   window.scrollTo(0, 0);
+  app.querySelector("h1")?.focus({ preventScroll: true });
 }
 
 function zeigeStart() {
@@ -49,6 +50,7 @@ function zeigeSituation() {
     punkte: zustand.punkte,
   });
   window.scrollTo(0, 0);
+  app.querySelector(".situation__nachricht").focus({ preventScroll: true });
 }
 
 function werteAntwortAus(antwort) {

@@ -42,6 +42,6 @@ function zeigeNachrichtMitLinkVorschau(eintrag, situation) {
     const vorschau = erstelleLinkVorschau();
     nachricht.after(vorschau);
     verbindeLinkVorschau(nachricht, vorschau);
-    bereiteLinkVorschauVor(vorschau, situation.link);
+    bereiteLinkVorschauVor(nachricht, vorschau, situation.link);
   }
 }

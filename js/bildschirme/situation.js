@@ -11,8 +11,15 @@ export function erstelleSituationBildschirm({ beiAntwort, beimBeenden }) {
   nachricht.after(vorschau);
   verbindeLinkVorschau(nachricht, vorschau);
 
-  bildschirm.querySelector(".situation__echt").addEventListener("click", () => beiAntwort("echt"));
-  bildschirm.querySelector(".situation__phishing").addEventListener("click", () => beiAntwort("phishing"));
+  function beantworte(event, antwort) {
+    const istZweiterKlick = event.detail > 1;
+    if (!istZweiterKlick) {
+      beiAntwort(antwort);
+    }
+  }
+
+  bildschirm.querySelector(".situation__echt").addEventListener("click", (event) => beantworte(event, "echt"));
+  bildschirm.querySelector(".situation__phishing").addEventListener("click", (event) => beantworte(event, "phishing"));
   bildschirm.querySelector(".situation__beenden").addEventListener("click", beimBeenden);
 
   return bildschirm;
@@ -33,6 +40,7 @@ function zeigeFortschritt(bildschirm, nummer, anzahl) {
   const fortschritt = bildschirm.querySelector(".situation__fortschritt");
   fortschritt.setAttribute("aria-valuenow", nummer);
   fortschritt.setAttribute("aria-valuemax", anzahl);
+  fortschritt.setAttribute("aria-valuetext", `Situation ${nummer} von ${anzahl}`);
   fortschritt.querySelector(".fortschritt__balken").style.width = `${(nummer / anzahl) * 100}%`;
 }
 
@@ -48,6 +56,7 @@ function zeigeKanal(bildschirm, kanal) {
 }
 
 function zeigeNachricht(bildschirm, situation) {
-  bildschirm.querySelector(".situation__nachricht").replaceChildren(erstelleNachricht(situation));
-  bereiteLinkVorschauVor(bildschirm.querySelector(".linkvorschau"), situation.link);
+  const nachricht = bildschirm.querySelector(".situation__nachricht");
+  nachricht.replaceChildren(erstelleNachricht(situation));
+  bereiteLinkVorschauVor(nachricht, bildschirm.querySelector(".linkvorschau"), situation.link);
 }

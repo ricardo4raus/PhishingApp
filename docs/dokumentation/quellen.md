@@ -32,3 +32,5 @@ Autor: Ricardo Kraus · Format wie im Quellenverzeichnis der Begleitdokumentatio
 | Speichern im Browser (`localStorage`) | https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage | 09.11.2026 |
 | SVG-Kreis mit `pathLength` | https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/pathLength | 09.11.2026 |
 | Aufklappbare Bereiche (`<details>`, `<summary>`) | https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details | 09.11.2026 |
+| Hover nur bei Geräten mit Maus (`@media (hover)`) | https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/hover | 09.11.2026 |
+| Beschreibung für Screenreader (`aria-describedby`) | https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-describedby | 09.11.2026 |

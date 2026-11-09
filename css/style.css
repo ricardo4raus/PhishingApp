@@ -116,7 +116,16 @@ button {
 }
 
 .nur-desktop {
-  display: none;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+[tabindex="-1"]:focus {
+  outline: none;
 }
 
 /* ========== Seitenaufbau ========== */
@@ -869,16 +878,18 @@ button {
   color: var(--farbe-primaer);
 }
 
-.antwort--echt:hover {
-  background-color: var(--farbe-primaer-hell);
-}
-
 .antwort--phishing {
   color: var(--farbe-lila);
 }
 
-.antwort--phishing:hover {
-  background-color: var(--farbe-lila-hell);
+@media (hover: hover) {
+  .antwort--echt:hover {
+    background-color: var(--farbe-primaer-hell);
+  }
+
+  .antwort--phishing:hover {
+    background-color: var(--farbe-lila-hell);
+  }
 }
 
 .fehlermeldung {
@@ -1181,7 +1192,11 @@ button {
 
 @media (min-width: 900px) {
   .nur-desktop {
-    display: inline;
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
   }
 
   .kopfzeile {

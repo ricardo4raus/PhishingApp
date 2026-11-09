@@ -126,8 +126,9 @@ Alle Kanäle sind neutral nachgebildet: keine echten Logos, erfundene Namen, Num
 Ziel: Man soll üben, vor dem Klicken zu prüfen, wohin ein Link wirklich führt.
 
 - Ein Link ist ein `<button class="link">` und kein echter `<a>`-Link. So kann die App nie auf eine Phishing-Adresse führen.
-- Das echte Ziel steht im Attribut `data-ziel`.
-- Unter jeder Nachricht mit Link steht eine Vorschauzeile (`.linkvorschau`, `aria-live="polite"`).
+- Das echte Ziel steht in der Vorschauzeile (`.linkvorschau__ziel`, eindeutige `id`). Der Link verweist mit
+  `aria-describedby` darauf, so lesen Screenreader das Ziel beim Link vor.
+- Unter jeder Nachricht mit Link steht eine Vorschauzeile (`.linkvorschau`, Vorlage `vorlage-linkvorschau`).
   Sie ist fest im Situationsbildschirm und wird bei Situationen ohne Link mit `hidden` ausgeblendet.
 - Sie enthält zwei Texte in derselben Rasterzelle: den Hinweis «Fahre über den Link oder tippe darauf …» und
   «Führt zu: …» mit dem echten Ziel. Sichtbar ist immer nur einer. Die Zeile ist so hoch wie der längere Text
@@ -135,7 +136,7 @@ Ziel: Man soll üben, vor dem Klicken zu prüfen, wohin ein Link wirklich führt
 - Beim Darüberfahren (`mouseover`), Antippen (`click`) oder mit der Tastatur (`focusin`) wird das Ziel sichtbar.
   Beim Verlassen (`mouseout`, `focusout`) erscheint wieder der Hinweis.
 - Die Ereignisse werden einmal auf der ganzen Nachricht abgefangen (Ereignisdelegation, `verbindeLinkVorschau()`),
-  pro Situation setzt `bereiteLinkVorschauVor()` das neue Ziel.
+  pro Situation setzt `bereiteLinkVorschauVor(nachricht, vorschau, link)` das neue Ziel und `aria-describedby`.
 - `click` ist zusätzlich nötig, weil Safari auf dem iPhone Knöpfe beim Antippen nicht fokussiert.
 
 ## Situationen (Spielreihenfolge)
@@ -208,3 +209,13 @@ Alle Text-Hintergrund-Kombinationen erfüllen den Kontrast-Standard WCAG AA (min
   Ergebnis als Text. Aufgeklappt: Kontext, die Nachricht mit Link-Prüfung und bei Fehlern die Erklärung (`erstelleErklaerung`).
 - Richtig/falsch wird über Symbol, Text und Randfarbe gezeigt (`.antwort-eintrag--richtig` / `--falsch`).
 - Desktop: aufgeklappter Eintrag in zwei Spalten (Nachricht links, Erklärung rechts).
+
+## Fokus und Bedienung
+
+- Neuer Bildschirm: Die Hauptüberschrift (`h1` mit `tabindex="-1"`) bekommt den Fokus, ohne zu scrollen.
+- Neue Situation: Die Nachricht (`.situation__nachricht`, `tabindex="-1"`) bekommt den Fokus.
+  Screenreader lesen so die neue Nachricht vor, und eine gedrückte Enter-Taste beantwortet keine weiteren Situationen.
+- Doppelklick auf «Echt» oder «Phishing»: Der zweite Klick (`event.detail > 1`) wird ignoriert.
+- Hover-Farben der Antwort-Knöpfe nur bei Geräten mit Maus (`@media (hover: hover)`), damit auf dem Handy nichts eingefärbt hängen bleibt.
+- `.nur-desktop`: auf dem Handy nur optisch versteckt, für Screenreader weiterhin lesbar.
+- Daten: `ladeSituationen()` wirft einen Fehler, wenn die Datei keine Situationen enthält → Fehlermeldung.
