@@ -1,0 +1,7 @@
+# Word-Dokumente (Begleitdokumentation enthält später Kontaktdaten)
+*.docx
+~$*
+
+# Betriebssystem / Editor
+Thumbs.db
+.DS_Store
