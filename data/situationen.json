@@ -2,22 +2,32 @@
   {
     "id": 1,
     "kanal": "SMS",
+    "kontext": null,
     "absender": "+44 7700 900461",
     "zeit": "Heute, 09:14",
-    "text": "Ihr Paket konnte nicht zugestellt werden. Bitte bestätigen Sie die Zustellgebühr von CHF 1.95 innerhalb von 24 Std., sonst wird es zurückgeschickt:",
-    "link": "paket-zustellung-ch.info/z8841",
+    "text": [
+      "Ihr Paket konnte nicht zugestellt werden. Bitte bestätigen Sie die Zustellgebühr von CHF 1.95 innerhalb von 24 Std., sonst wird es zurückgeschickt:"
+    ],
+    "link": {
+      "text": "paket-zustellung-ch.info/z8841",
+      "ziel": "https://paket-zustellung-ch.info/z8841",
+      "alsKnopf": false
+    },
     "istPhishing": true,
     "merkmale": [
       {
         "titel": "Unbekannter Absender",
+        "art": "absender",
         "text": "Paketdienste schreiben nicht von ausländischen Handynummern."
       },
       {
         "titel": "Zeitdruck",
+        "art": "zeitdruck",
         "text": "«Innerhalb von 24 Std.» soll dich zu einer schnellen Reaktion drängen."
       },
       {
         "titel": "Verdächtiger Link",
+        "art": "link",
         "text": "Die Adresse gehört nicht zum echten Paketdienst. Der kleine Betrag soll harmlos wirken."
       }
     ],
@@ -28,11 +38,204 @@
     ]
   },
   {
+    "id": 8,
+    "kanal": "E-Mail",
+    "kontext": "Du heisst Alex und hast gestern im Onlineshop «Pixelwerk» Kopfhörer bestellt.",
+    "absender": "Pixelwerk",
+    "absenderAdresse": "bestellung@pixelwerk-shop.ch",
+    "betreff": "Deine Bestellung 40-28817 ist bestätigt",
+    "zeit": "Gestern, 18:32",
+    "text": [
+      "Hallo Alex",
+      "Vielen Dank für deine Bestellung. Wir haben sie erhalten und bereiten den Versand vor.",
+      "Bestellnummer: 40-28817 · Artikel: Kabellose Kopfhörer · Betrag: CHF 89.90 (bereits bezahlt)",
+      "Sobald dein Paket unterwegs ist, schicken wir dir die Sendungsnummer."
+    ],
+    "link": {
+      "text": "Bestellung ansehen",
+      "ziel": "https://www.pixelwerk-shop.ch/konto/bestellungen/40-28817",
+      "alsKnopf": true
+    },
+    "gruss": "Freundliche Grüsse\nDein Pixelwerk-Team",
+    "istPhishing": false,
+    "merkmale": [
+      {
+        "titel": "Erwartete Nachricht",
+        "text": "Du hast gestern tatsächlich bei diesem Shop bestellt."
+      },
+      {
+        "titel": "Persönliche Anrede",
+        "text": "Die E-Mail nennt deinen Namen, die Bestellnummer und den richtigen Artikel."
+      },
+      {
+        "titel": "Passende Adressen",
+        "text": "Absender und Link-Ziel gehören beide zur Adresse des Shops (pixelwerk-shop.ch)."
+      }
+    ],
+    "reaktion": [
+      "Nichts tun, die E-Mail ist harmlos",
+      "Bei Fragen direkt im Kundenkonto des Shops nachsehen"
+    ]
+  },
+  {
+    "id": 3,
+    "kanal": "WhatsApp",
+    "kontext": "Deine Mutter zeigt dir diese Nachricht auf ihrem Handy und fragt dich um Rat.",
+    "absender": "+44 7700 900318",
+    "unbekannterKontakt": true,
+    "zeit": "21:47",
+    "text": [
+      "Hallo Mama, das ist meine neue Nummer. Mein Handy ist kaputt gegangen.",
+      "Kannst du mir schnell helfen? Ich muss heute noch eine Rechnung bezahlen, komme aber nicht ins E-Banking.",
+      "Kannst du 480 Franken überweisen? Ich gebe es dir morgen zurück. Bitte schnell, es ist dringend!"
+    ],
+    "link": null,
+    "istPhishing": true,
+    "merkmale": [
+      {
+        "titel": "Unbekannte Nummer",
+        "art": "absender",
+        "text": "Die Nachricht kommt von einer Nummer, die nicht gespeichert ist. Der Name des Kindes wird nie genannt."
+      },
+      {
+        "titel": "Bitte um Geld",
+        "art": "geld",
+        "text": "Kurz nach der «neuen Nummer» geht es schon um eine Überweisung."
+      },
+      {
+        "titel": "Zeitdruck",
+        "art": "zeitdruck",
+        "text": "«Bitte schnell, es ist dringend!» soll verhindern, dass man nachprüft."
+      }
+    ],
+    "reaktion": [
+      "Kein Geld überweisen",
+      "Das Kind über die alte, bekannte Nummer anrufen",
+      "Nummer blockieren und melden"
+    ]
+  },
+  {
+    "id": 7,
+    "kanal": "SMS",
+    "kontext": "Du meldest dich gerade auf dem Lernportal deiner Schule an und hast einen Code angefordert.",
+    "absender": "Lernportal",
+    "zeit": "Heute, 14:02",
+    "text": [
+      "Dein Bestätigungscode lautet 482 913. Er ist 10 Minuten gültig. Gib diesen Code niemandem weiter."
+    ],
+    "link": null,
+    "istPhishing": false,
+    "merkmale": [
+      {
+        "titel": "Erwartete Nachricht",
+        "text": "Du hast den Code gerade selbst angefordert."
+      },
+      {
+        "titel": "Kein Link",
+        "text": "Die SMS enthält keinen Link und verlangt nichts von dir."
+      },
+      {
+        "titel": "Warnung vor Weitergabe",
+        "text": "Echte Dienste warnen davor, den Code an andere weiterzugeben."
+      }
+    ],
+    "reaktion": [
+      "Code nur auf der Seite eingeben, auf der du dich gerade anmeldest",
+      "Code nie weitergeben, auch nicht am Telefon"
+    ]
+  },
+  {
+    "id": 2,
+    "kanal": "E-Mail",
+    "kontext": null,
+    "absender": "Limmatbank Kundenservice",
+    "absenderAdresse": "sicherheit@limmatbank-kundenservice.info",
+    "betreff": "Dringend: Ihr Konto wird gesperrt",
+    "zeit": "Heute, 07:55",
+    "text": [
+      "Sehr geehrter Kunde",
+      "Bei einer Sicherheitsprüfung haben wir ungewöhnliche Aktivitäten in Ihrem Konto festgestellt. Ihr Konto wird in 24 Stunden gesperrt, wenn Sie Ihre Daten nicht bestätigen.",
+      "Bitte bestätigen Sie jetzt Ihre Kontodaten und Ihre Kreditkartennummer."
+    ],
+    "link": {
+      "text": "Konto jetzt bestätigen",
+      "ziel": "http://limmatbank-sicherheit.info/konto-bestaetigen",
+      "alsKnopf": true
+    },
+    "gruss": "Freundliche Grüsse\nIhr Sicherheitsteam",
+    "istPhishing": true,
+    "merkmale": [
+      {
+        "titel": "Drohung und Zeitdruck",
+        "art": "zeitdruck",
+        "text": "«Ihr Konto wird in 24 Stunden gesperrt» soll dir Angst machen."
+      },
+      {
+        "titel": "Unpersönliche Anrede",
+        "art": "anrede",
+        "text": "Deine Bank kennt deinen Namen. «Sehr geehrter Kunde» passt zu einer Massen-E-Mail."
+      },
+      {
+        "titel": "Aufforderung zur Dateneingabe",
+        "art": "daten",
+        "text": "Banken fragen nie per E-Mail nach Kontodaten oder Kreditkartennummern. Absender und Link-Ziel gehören nicht zur Bank."
+      }
+    ],
+    "reaktion": [
+      "Nicht auf den Link klicken und keine Daten eingeben",
+      "Bei Unsicherheit die Bank über die bekannte Telefonnummer anrufen",
+      "Melden auf antiphishing.ch"
+    ]
+  },
+  {
+    "id": 4,
+    "kanal": "Instagram",
+    "kontext": null,
+    "absender": "Support Team ✓",
+    "absenderAdresse": "help.center.support1",
+    "zeit": "Heute, 16:20",
+    "text": [
+      "Hallo, dein Account wurde wegen eines Verstosses gegen unsere Community-Richtlinien gemeldet.",
+      "Wenn du nicht innerhalb von 12 Stunden Einspruch einlegst, wird dein Account dauerhaft gelöscht. Melde dich hier an:"
+    ],
+    "link": {
+      "text": "help-instagram-support.info/einspruch",
+      "ziel": "http://help-instagram-support.info/einspruch/login",
+      "alsKnopf": false
+    },
+    "istPhishing": true,
+    "merkmale": [
+      {
+        "titel": "Falscher Absender",
+        "art": "absender",
+        "text": "Instagram schreibt dir nicht per Direktnachricht. Das Häkchen ist nur ein Zeichen im Namen, kein echtes Verifizierungs-Abzeichen."
+      },
+      {
+        "titel": "Drohung und Zeitdruck",
+        "art": "zeitdruck",
+        "text": "«Innerhalb von 12 Stunden» und «dauerhaft gelöscht» sollen dich unter Druck setzen."
+      },
+      {
+        "titel": "Login-Link auf fremder Seite",
+        "art": "link",
+        "text": "Die Adresse gehört nicht zu Instagram. Dort würdest du dein Passwort an Betrüger geben."
+      }
+    ],
+    "reaktion": [
+      "Nicht auf den Link klicken",
+      "Account in der App blockieren und melden",
+      "Dein Passwort nur direkt in der offiziellen App ändern"
+    ]
+  },
+  {
     "id": 9,
     "kanal": "SMS",
+    "kontext": "Du hast letzte Woche online etwas bestellt und wartest auf das Paket.",
     "absender": "Paketdienst",
     "zeit": "Gestern, 17:40",
-    "text": "Ihre Sendung 99.60.123456.78901234 wird morgen zwischen 10:00 und 13:00 Uhr zugestellt. Sie müssen nichts tun.",
+    "text": [
+      "Ihre Sendung 99.60.123456.78901234 wird morgen zwischen 10:00 und 13:00 Uhr zugestellt. Sie müssen nichts tun."
+    ],
     "link": null,
     "istPhishing": false,
     "merkmale": [
@@ -52,6 +255,133 @@
     "reaktion": [
       "Nichts tun, die Nachricht ist harmlos",
       "Sendung bei Bedarf in der offiziellen App des Paketdiensts prüfen"
+    ]
+  },
+  {
+    "id": 5,
+    "kanal": "E-Mail",
+    "kontext": null,
+    "absender": "Gewinnspiel-Team",
+    "absenderAdresse": "gewinner@gewinn-zentrale24.com",
+    "betreff": "Herzlichen Glückwunsch, du hast gewonnen!",
+    "zeit": "Heute, 11:03",
+    "text": [
+      "Hallo!",
+      "Du wurdest als Gewinnerin oder Gewinner unseres monatlichen Gewinnspiels ausgewählt und erhältst ein neues Smartphone im Wert von CHF 1'200.",
+      "Um deinen Gewinn zu erhalten, gib bitte deine Adresse und deine Kreditkartendaten für die Versandgebühr von CHF 2.– an.",
+      "Achtung: Das Angebot gilt nur noch heute!"
+    ],
+    "link": {
+      "text": "Gewinn jetzt abholen",
+      "ziel": "http://gewinn-zentrale24.com/abholen?id=88412",
+      "alsKnopf": true
+    },
+    "gruss": null,
+    "istPhishing": true,
+    "merkmale": [
+      {
+        "titel": "Zu gut, um wahr zu sein",
+        "art": "angebot",
+        "text": "Du hast an keinem Gewinnspiel teilgenommen und sollst trotzdem ein teures Smartphone gewinnen."
+      },
+      {
+        "titel": "Aufforderung zur Dateneingabe",
+        "art": "daten",
+        "text": "Für eine kleine Gebühr sollst du deine Kreditkartendaten angeben. Genau darum geht es den Betrügern."
+      },
+      {
+        "titel": "Zeitdruck",
+        "art": "zeitdruck",
+        "text": "«Nur noch heute» soll verhindern, dass du in Ruhe nachdenkst."
+      }
+    ],
+    "reaktion": [
+      "Nicht auf den Link klicken und keine Daten eingeben",
+      "E-Mail löschen",
+      "Melden auf antiphishing.ch"
+    ]
+  },
+  {
+    "id": 6,
+    "kanal": "E-Mail",
+    "kontext": "Deine Schule verwendet ein Schulportal unter portal.bs-zentrum.ch.",
+    "absender": "IT-Support Berufsschule",
+    "absenderAdresse": "it-support@bs-passwort-service.com",
+    "betreff": "Ihr Passwort läuft heute ab",
+    "zeit": "Heute, 08:12",
+    "text": [
+      "Hallo",
+      "Ihr Passwort für das Schulportal läuft heute um 23:59 Uhr ab. Danach können Sie nicht mehr auf Ihre E-Mails und Dateien zugreifen.",
+      "Behalten Sie Ihr aktuelles Passwort, indem Sie sich hier anmelden:"
+    ],
+    "link": {
+      "text": "https://portal.bs-zentrum.ch/passwort-behalten",
+      "ziel": "http://bs-passwort-service.com/login.php",
+      "alsKnopf": false
+    },
+    "gruss": "Freundliche Grüsse\nIT-Support",
+    "istPhishing": true,
+    "merkmale": [
+      {
+        "titel": "Gefälschte Absenderadresse",
+        "art": "absender",
+        "text": "Der Name klingt nach deiner Schule, die Adresse endet aber auf bs-passwort-service.com."
+      },
+      {
+        "titel": "Link führt woanders hin",
+        "art": "link",
+        "text": "Der Text zeigt das Schulportal an, das echte Ziel ist aber eine fremde Seite. Fahre über den Link oder tippe darauf, um das zu sehen."
+      },
+      {
+        "titel": "Zeitdruck",
+        "art": "zeitdruck",
+        "text": "«Läuft heute ab» soll dich dazu bringen, sofort zu klicken."
+      }
+    ],
+    "reaktion": [
+      "Nicht auf den Link klicken",
+      "Passwort nur direkt im Schulportal ändern",
+      "Die IT der Schule informieren"
+    ]
+  },
+  {
+    "id": 10,
+    "kanal": "E-Mail",
+    "kontext": "Du machst eine Lehre. Dein Chef heisst Thomas Meier.",
+    "absender": "Thomas Meier",
+    "absenderAdresse": "thomas.meier.gl@privatmail-online.net",
+    "betreff": "Kurze Bitte – vertraulich",
+    "zeit": "Heute, 10:21",
+    "text": [
+      "Hallo",
+      "Ich sitze gerade in einer Sitzung und kann nicht telefonieren. Ich brauche dringend deine Hilfe: Kauf bitte fünf Geschenkkarten zu je CHF 100 an der Tankstelle oder im Kiosk.",
+      "Schick mir danach die Codes per E-Mail. Du bekommst das Geld morgen zurück.",
+      "Bitte behalte das für dich, es ist eine Überraschung für einen Kunden."
+    ],
+    "link": null,
+    "gruss": "Gruss\nThomas",
+    "istPhishing": true,
+    "merkmale": [
+      {
+        "titel": "Ungewöhnliche Bitte",
+        "art": "bitte",
+        "text": "Ein Chef lässt Lernende keine Geschenkkarten kaufen und die Codes per E-Mail schicken."
+      },
+      {
+        "titel": "Zeitdruck und nicht erreichbar",
+        "art": "zeitdruck",
+        "text": "«Dringend» und «kann nicht telefonieren» sollen verhindern, dass du nachfragst."
+      },
+      {
+        "titel": "Geheimhaltung und private Adresse",
+        "art": "absender",
+        "text": "«Behalte das für dich» und eine private E-Mail-Adresse statt der Firmenadresse sind typisch für diesen Betrug."
+      }
+    ],
+    "reaktion": [
+      "Keine Geschenkkarten kaufen",
+      "Den Chef persönlich oder über die bekannte Nummer fragen",
+      "Vorgesetzte oder IT informieren"
     ]
   }
 ]

@@ -23,3 +23,11 @@ Autor: Ricardo Kraus · Format wie im Quellenverzeichnis der Begleitdokumentatio
 | Meldeplattform antiphishing.ch (BACS) | https://www.antiphishing.ch | 09.11.2026 |
 | Strafgesetzbuch, Art. 143 und 147 | https://www.fedlex.admin.ch/eli/cc/54/757_781_799/de | 09.11.2026 |
 | Phishing-Test «eBanking – aber sicher!» (HSLU) | https://www.ebas.ch | 09.11.2026 |
+| Ereignisdelegation (Event bubbling) | https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Event_bubbling | 09.11.2026 |
+| Live-Regionen für Screenreader (`aria-live`) | https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-live | 09.11.2026 |
+| Fortschrittsbalken für Screenreader (`role="progressbar"`) | https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/progressbar_role | 09.11.2026 |
+| Bewegung reduzieren (`prefers-reduced-motion`) | https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-reduced-motion | 09.11.2026 |
+| Attribut `hidden` und CSS `display` | https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/hidden | 09.11.2026 |
+| Hell-/Dunkelmodus und eigene Wahl | https://web.dev/articles/prefers-color-scheme | 09.11.2026 |
+| Speichern im Browser (`localStorage`) | https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage | 09.11.2026 |
+| SVG-Kreis mit `pathLength` | https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/pathLength | 09.11.2026 |

@@ -1,6 +1,7 @@
-/* ========== Farben und Masse ========== */
+/* ========== Farben und Masse (hell, dunkel über data-farbschema) ========== */
 
 :root {
+  color-scheme: light;
   --farbe-hintergrund: #ffffff;
   --farbe-flaeche: #f5f7fc;
   --farbe-blase: #ffffff;
@@ -17,6 +18,16 @@
   --farbe-falsch: #b4441a;
   --farbe-falsch-hell: #fcede6;
 
+  --farbe-sms-blase: #e9e9eb;
+  --farbe-email-knopf: #374151;
+  --farbe-email-knopf-text: #ffffff;
+  --farbe-whatsapp-kopf: #075e54;
+  --farbe-whatsapp-kopf-text: #ffffff;
+  --farbe-whatsapp-hintergrund: #efeae2;
+  --farbe-whatsapp-blase: #ffffff;
+  --farbe-whatsapp-hinweis: #fff3c4;
+  --farbe-instagram-blase: #efefef;
+
   --radius-button: 16px;
   --radius-karte: 24px;
   --abstand-seite: 24px;
@@ -24,24 +35,33 @@
   --groesse-touch: 48px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --farbe-hintergrund: #0b0f1a;
-    --farbe-flaeche: #151b2b;
-    --farbe-blase: #222b42;
-    --farbe-text: #eef2fa;
-    --farbe-text-gedaempft: #a3aec4;
-    --farbe-rahmen: #2a3550;
-    --farbe-primaer: #6e9bff;
-    --farbe-primaer-hell: #16223f;
-    --farbe-text-auf-primaer: #0b0f1a;
-    --farbe-lila: #b39bff;
-    --farbe-lila-hell: #261f42;
-    --farbe-richtig: #4ade9a;
-    --farbe-richtig-hell: #11301f;
-    --farbe-falsch: #fdba74;
-    --farbe-falsch-hell: #3a2414;
-  }
+:root[data-farbschema="dunkel"] {
+  color-scheme: dark;
+  --farbe-hintergrund: #0b0f1a;
+  --farbe-flaeche: #151b2b;
+  --farbe-blase: #222b42;
+  --farbe-text: #eef2fa;
+  --farbe-text-gedaempft: #a3aec4;
+  --farbe-rahmen: #2a3550;
+  --farbe-primaer: #6e9bff;
+  --farbe-primaer-hell: #16223f;
+  --farbe-text-auf-primaer: #0b0f1a;
+  --farbe-lila: #b39bff;
+  --farbe-lila-hell: #261f42;
+  --farbe-richtig: #4ade9a;
+  --farbe-richtig-hell: #11301f;
+  --farbe-falsch: #fdba74;
+  --farbe-falsch-hell: #3a2414;
+
+  --farbe-sms-blase: #262e42;
+  --farbe-email-knopf: #d1d5db;
+  --farbe-email-knopf-text: #111827;
+  --farbe-whatsapp-kopf: #1f2c34;
+  --farbe-whatsapp-kopf-text: #e9edef;
+  --farbe-whatsapp-hintergrund: #0b141a;
+  --farbe-whatsapp-blase: #202c33;
+  --farbe-whatsapp-hinweis: #2a3036;
+  --farbe-instagram-blase: #262626;
 }
 
 /* ========== Grundlagen ========== */
@@ -62,6 +82,7 @@ body {
 }
 
 h1,
+h2,
 p,
 ul {
   margin: 0;
@@ -86,6 +107,10 @@ button {
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+[hidden] {
+  display: none !important;
 }
 
 .nur-desktop {
@@ -116,7 +141,7 @@ button {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
 }
 
 .inhalt {
@@ -227,27 +252,19 @@ button {
 }
 
 .fortschritt {
-  appearance: none;
   width: 100%;
   height: 8px;
-  border: none;
   border-radius: 999px;
   background-color: var(--farbe-rahmen);
   overflow: hidden;
 }
 
-.fortschritt::-webkit-progress-bar {
-  background-color: var(--farbe-rahmen);
-}
-
-.fortschritt::-webkit-progress-value {
-  background-color: var(--farbe-primaer);
+.fortschritt__balken {
+  width: 0;
+  height: 100%;
   border-radius: 999px;
-}
-
-.fortschritt::-moz-progress-bar {
   background-color: var(--farbe-primaer);
-  border-radius: 999px;
+  transition: width 400ms ease-out;
 }
 
 .punkte {
@@ -262,53 +279,384 @@ button {
   font-weight: 700;
 }
 
-.nachricht {
+.farbschema-knopf {
+  margin-left: auto;
+}
+
+.farbschema-knopf__sonne,
+[data-farbschema="dunkel"] .farbschema-knopf__mond {
+  display: none;
+}
+
+[data-farbschema="dunkel"] .farbschema-knopf__sonne {
+  display: block;
+}
+
+/* ---------- Link in einer Nachricht ---------- */
+
+.link {
+  display: inline;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--farbe-primaer);
+  text-align: left;
+  text-decoration: underline;
+  overflow-wrap: anywhere;
+}
+
+.link:focus-visible {
+  outline-offset: 1px;
+  border-radius: 2px;
+}
+
+.link--knopf {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--groesse-touch);
+  padding-inline: 20px;
+  border-radius: 8px;
+  background-color: var(--farbe-email-knopf);
+  color: var(--farbe-email-knopf-text);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.linkvorschau {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px 14px;
+  border: 1px dashed var(--farbe-rahmen);
+  border-radius: 12px;
+  color: var(--farbe-text-gedaempft);
+  font-size: 0.875rem;
+  transition: background-color 150ms, color 150ms;
+}
+
+.linkvorschau__inhalt {
+  display: grid;
+  flex: 1;
+  min-width: 0;
+}
+
+.linkvorschau__hinweis,
+.linkvorschau__ziel {
+  grid-area: 1 / 1;
+  overflow-wrap: anywhere;
+}
+
+.linkvorschau__ziel {
+  visibility: hidden;
+  font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+
+.linkvorschau--aktiv {
+  border-style: solid;
+  border-color: var(--farbe-text);
+  background-color: var(--farbe-text);
+  color: var(--farbe-hintergrund);
+}
+
+.linkvorschau--aktiv .linkvorschau__hinweis {
+  visibility: hidden;
+}
+
+.linkvorschau--aktiv .linkvorschau__ziel {
+  visibility: visible;
+}
+
+/* ---------- SMS ---------- */
+
+.sms {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
   padding: 20px;
   border: 1px solid var(--farbe-rahmen);
   border-radius: var(--radius-karte);
-  background-color: var(--farbe-flaeche);
+  background-color: var(--farbe-hintergrund);
 }
 
-.nachricht__kopf {
+.sms__kopf {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 2px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--farbe-rahmen);
 }
 
-.nachricht__avatar {
+.sms__avatar {
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 4px;
   border-radius: 50%;
   background-color: var(--farbe-rahmen);
   color: var(--farbe-text-gedaempft);
 }
 
-.nachricht__absender {
+.sms__absender {
   font-weight: 700;
-  font-size: 1.125rem;
+  font-size: 1.0625rem;
 }
 
-.nachricht__zeit {
+.sms__art,
+.sms__zeit {
+  color: var(--farbe-text-gedaempft);
+  font-size: 0.8125rem;
+}
+
+.sms__zeit {
+  text-align: center;
+}
+
+.sms__verlauf {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.sms__blase {
+  max-width: 85%;
+  padding: 10px 14px;
+  border-radius: 20px 20px 20px 6px;
+  background-color: var(--farbe-sms-blase);
+  font-size: 1.0625rem;
+}
+
+/* ---------- E-Mail ---------- */
+
+.email {
+  border: 1px solid var(--farbe-rahmen);
+  border-radius: var(--radius-karte);
+  background-color: var(--farbe-hintergrund);
+  overflow: hidden;
+}
+
+.email__werkzeuge {
+  display: flex;
+  gap: 20px;
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--farbe-rahmen);
+  background-color: var(--farbe-flaeche);
   color: var(--farbe-text-gedaempft);
   font-size: 0.875rem;
 }
 
-.nachricht__blase {
-  padding: 16px;
-  border-radius: 18px;
-  background-color: var(--farbe-blase);
-  font-size: 1.0625rem;
+.email__werkzeug {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.nachricht__link {
-  color: var(--farbe-primaer);
-  text-decoration: underline;
+.email__betreff {
+  padding: 16px 20px 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.email__kopf {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 20px 16px;
+  border-bottom: 1px solid var(--farbe-rahmen);
+}
+
+.email__avatar {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--farbe-lila-hell);
+  color: var(--farbe-lila);
+  font-weight: 700;
+}
+
+.email__personen {
+  flex: 1;
+  min-width: 0;
+}
+
+.email__absender {
+  font-weight: 700;
+}
+
+.email__adresse {
+  color: var(--farbe-text-gedaempft);
+  font-size: 0.875rem;
   overflow-wrap: anywhere;
+}
+
+.email__empfaenger,
+.email__zeit {
+  color: var(--farbe-text-gedaempft);
+  font-size: 0.8125rem;
+}
+
+.email__zeit {
+  white-space: nowrap;
+}
+
+.email__inhalt {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 20px 20px;
+}
+
+.email__absatz {
+  white-space: pre-line;
+}
+
+/* ---------- WhatsApp ---------- */
+
+.whatsapp {
+  border: 1px solid var(--farbe-rahmen);
+  border-radius: var(--radius-karte);
+  overflow: hidden;
+}
+
+.whatsapp__kopf {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background-color: var(--farbe-whatsapp-kopf);
+  color: var(--farbe-whatsapp-kopf-text);
+}
+
+.whatsapp__avatar {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgb(255 255 255 / 0.2);
+}
+
+.whatsapp__absender {
+  flex: 1;
+  font-weight: 600;
+}
+
+.whatsapp__aktionen {
+  display: flex;
+  gap: 18px;
+}
+
+.whatsapp__verlauf {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 16px 12px;
+  background-color: var(--farbe-whatsapp-hintergrund);
+}
+
+.whatsapp__hinweis {
+  align-self: center;
+  max-width: 90%;
+  margin-bottom: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background-color: var(--farbe-whatsapp-hinweis);
+  font-size: 0.8125rem;
+  text-align: center;
+}
+
+.whatsapp__blase {
+  max-width: 85%;
+  padding: 6px 10px;
+  border-radius: 0 10px 10px 10px;
+  background-color: var(--farbe-whatsapp-blase);
+  box-shadow: 0 1px 1px rgb(0 0 0 / 0.1);
+}
+
+.whatsapp__zeit {
+  float: right;
+  margin: 8px 0 -4px 12px;
+  color: var(--farbe-text-gedaempft);
+  font-size: 0.6875rem;
+}
+
+/* ---------- Instagram ---------- */
+
+.instagram {
+  border: 1px solid var(--farbe-rahmen);
+  border-radius: var(--radius-karte);
+  background-color: var(--farbe-hintergrund);
+}
+
+.instagram__kopf {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--farbe-rahmen);
+}
+
+.instagram__avatar {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  padding: 2px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7);
+}
+
+.instagram__avatar-bild {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--farbe-hintergrund);
+  border-radius: 50%;
+  background-color: var(--farbe-flaeche);
+  color: var(--farbe-text-gedaempft);
+}
+
+.instagram__person {
+  flex: 1;
+  min-width: 0;
+}
+
+.instagram__absender {
+  font-weight: 700;
+}
+
+.instagram__konto {
+  color: var(--farbe-text-gedaempft);
+  font-size: 0.8125rem;
+}
+
+.instagram__verlauf {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 16px;
+}
+
+.instagram__zeit {
+  align-self: center;
+  margin-bottom: 6px;
+  color: var(--farbe-text-gedaempft);
+  font-size: 0.75rem;
+}
+
+.instagram__blase {
+  max-width: 80%;
+  padding: 10px 14px;
+  border-radius: 22px;
+  background-color: var(--farbe-instagram-blase);
 }
 
 .antwort {
@@ -432,10 +780,31 @@ button {
   flex: 1;
   text-align: center;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .situation__fortschritt {
   order: 1;
+}
+
+.situation__icon-mail,
+.situation__kanal[data-kanal="E-Mail"] .situation__icon-chat {
+  display: none;
+}
+
+.situation__kanal[data-kanal="E-Mail"] .situation__icon-mail {
+  display: block;
+}
+
+.situation__nachricht > * {
+  animation: einblenden 250ms ease-out;
+}
+
+@keyframes einblenden {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
 }
 
 .situation__frage {
@@ -449,6 +818,162 @@ button {
   align-items: center;
   gap: 8px;
   color: var(--farbe-text-gedaempft);
+}
+
+.situation__kontext {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background-color: var(--farbe-primaer-hell);
+  font-size: 0.9375rem;
+}
+
+.situation__kontext .icon {
+  margin-top: 2px;
+  color: var(--farbe-primaer);
+}
+
+/* ========== Bildschirm: Resultat ========== */
+
+.resultat__bewertung {
+  align-items: center;
+  text-align: center;
+}
+
+.resultat__ueberschrift {
+  font-weight: 700;
+}
+
+.resultat__kreis {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 200px;
+  height: 200px;
+}
+
+.resultat__ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.resultat__ring-spur,
+.resultat__ring-wert {
+  fill: none;
+  stroke-width: 10;
+}
+
+.resultat__ring-spur {
+  stroke: var(--farbe-rahmen);
+}
+
+.resultat__ring-wert {
+  stroke: var(--farbe-primaer);
+  stroke-linecap: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: calc(100 - var(--anteil));
+  animation: ring-fuellen 900ms ease-out;
+}
+
+@keyframes ring-fuellen {
+  from {
+    stroke-dashoffset: 100;
+  }
+}
+
+.resultat__punkte {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.resultat__zahl {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.resultat__einheit {
+  color: var(--farbe-text-gedaempft);
+  font-size: 1.125rem;
+}
+
+.resultat__titel {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.resultat__text {
+  max-width: 30rem;
+  color: var(--farbe-text-gedaempft);
+  font-size: 1.0625rem;
+}
+
+.resultat__statistik {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.statistik {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 20px;
+  border: 1px solid var(--farbe-rahmen);
+  border-radius: var(--radius-button);
+  background-color: var(--farbe-flaeche);
+}
+
+.statistik__name {
+  color: var(--farbe-text-gedaempft);
+  font-size: 0.9375rem;
+}
+
+.statistik__wert {
+  font-size: 1.75rem;
+  font-weight: 800;
+}
+
+.resultat__tipps {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.resultat__tipps-titel {
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+
+/* ========== Sehr schmale Handys (unter 360 px) ========== */
+
+@media (max-width: 359px) {
+  .situation__zaehler-wort {
+    display: none;
+  }
+}
+
+/* ========== Weniger Bewegung (Systemeinstellung) ========== */
+
+@media (prefers-reduced-motion: reduce) {
+  .fortschritt__balken,
+  .linkvorschau {
+    transition: none;
+  }
+
+  .situation__nachricht > *,
+  .resultat__ring-wert {
+    animation: none;
+  }
 }
 
 /* ========== Desktop (ab 900 px) ========== */
@@ -465,6 +990,7 @@ button {
 
   .kopfzeile__inhalt {
     flex-wrap: nowrap;
+    gap: 16px;
   }
 
   .inhalt {
@@ -472,6 +998,36 @@ button {
     align-items: center;
     gap: 96px;
     padding-block: 64px;
+  }
+
+  .inhalt--situation {
+    align-items: flex-start;
+  }
+
+  .resultat__ueberschrift {
+    color: var(--farbe-text-gedaempft);
+  }
+
+  .resultat__kreis {
+    width: 240px;
+    height: 240px;
+  }
+
+  .resultat__zahl {
+    font-size: 4.5rem;
+  }
+
+  .resultat__titel {
+    font-size: 3rem;
+  }
+
+  .resultat__details {
+    gap: 24px;
+  }
+
+  .situation__entscheidung {
+    position: sticky;
+    top: 32px;
   }
 
   .spalte {

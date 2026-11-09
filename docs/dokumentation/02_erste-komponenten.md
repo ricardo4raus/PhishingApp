@@ -2,6 +2,9 @@
 
 Autor: Ricardo Kraus · Stand: 09.11.2026
 
+> Diese Datei zeigt den Stand nach dem ersten Arbeitsschritt. Datenmodell und SMS-Darstellung wurden in
+> [Schritt 03](03_situationen-und-kanaele.md) erweitert. Den aktuellen Stand beschreibt [app-aufbau.md](app-aufbau.md).
+
 ## Was jetzt funktioniert
 
 - **Startbildschirm** mit Titel, Einleitung, Infos (Anzahl Situationen, Dauer) und Button «Training starten»

@@ -1,7 +1,8 @@
 import { ladeSituationen } from "./daten.js";
 import { erstelleAusVorlage } from "./vorlagen.js";
 import { erstelleStartBildschirm } from "./bildschirme/start.js";
-import { erstelleSituationBildschirm } from "./bildschirme/situation.js";
+import { erstelleSituationBildschirm, aktualisiereSituation } from "./bildschirme/situation.js";
+import { erstelleResultatBildschirm } from "./bildschirme/resultat.js";
 
 const app = document.querySelector("#app");
 
@@ -30,20 +31,24 @@ function starteTraining() {
   zustand.index = 0;
   zustand.punkte = 0;
   zustand.antworten = [];
-  zeigeSituation();
-}
 
-function zeigeSituation() {
   zeige(
     erstelleSituationBildschirm({
-      situation: zustand.situationen[zustand.index],
-      nummer: zustand.index + 1,
-      anzahl: zustand.situationen.length,
-      punkte: zustand.punkte,
       beiAntwort: werteAntwortAus,
       beimBeenden: beendeTraining,
     }),
   );
+  zeigeSituation();
+}
+
+function zeigeSituation() {
+  aktualisiereSituation(app, {
+    situation: zustand.situationen[zustand.index],
+    nummer: zustand.index + 1,
+    anzahl: zustand.situationen.length,
+    punkte: zustand.punkte,
+  });
+  window.scrollTo(0, 0);
 }
 
 function werteAntwortAus(antwort) {
@@ -64,10 +69,19 @@ function zeigeNaechsteSituation() {
   const istLetzteSituation = zustand.index >= zustand.situationen.length;
 
   if (istLetzteSituation) {
-    zeigeStart();
+    zeigeResultat();
   } else {
     zeigeSituation();
   }
+}
+
+function zeigeResultat() {
+  zeige(
+    erstelleResultatBildschirm({
+      antworten: zustand.antworten,
+      beimNochmalsSpielen: zeigeStart,
+    }),
+  );
 }
 
 function beendeTraining() {
