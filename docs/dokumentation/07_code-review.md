@@ -58,3 +58,31 @@ getestet. Die Überarbeitung ist in drei Teile aufgeteilt, jeder Teil hat einen 
 | Farbschema-Schalter | erfüllt |
 | Startseite Desktop (gekippte Vorschau-Karten) unverändert | geprüft |
 | Resultat bei 320 px: Kopfzeile auf einer Zeile, Statistik untereinander | geprüft |
+
+## Teil 3: Texte, Daten und Tipps
+
+| Befund | Lösung |
+|---|---|
+| Situation 9 (echte Paket-SMS) lehrte «Bekannter Absender, kommt vom Paketdienst selbst». Absendernamen von SMS können aber gefälscht werden, und gefälschte SMS landen oft im selben Verlauf wie echte. Die App hätte etwas Falsches beigebracht. | Merkmal ersetzt durch «Erwartete Nachricht: Du wartest tatsächlich auf ein Paket. Der Absendername allein beweist aber nichts, denn er kann gefälscht werden.» |
+| Situation 2 (Bank-E-Mail): Fremder Absender und fremder Link standen nur versteckt im Merkmal «Dateneingabe». Darum wurde der Tipp «Absender prüfen» nie vorgeschlagen. | Eigenes Merkmal «Fremde Adressen» (Art `absender`). Die Situation hat jetzt 4 Merkmale. |
+| Situation 3: «kaputt gegangen» und «dass man nachprüft» (nicht in Du-Form) | «kaputtgegangen» und «dass deine Mutter zuerst nachprüft» |
+| `alsKnopf` stand auch bei SMS- und Instagram-Links, wirkt aber nur bei E-Mails | Bei SMS und Instagram entfernt |
+| Resultat-Texte sprachen von «Phishing-Versuchen», auch wenn die Fehler bei echten Nachrichten passierten. «Die meisten» passte nicht zu 5 von 10. | Neutrale Texte: «Du hast fast alle Nachrichten richtig eingeschätzt» (ab 80 %), «Du hast schon viele Nachrichten richtig eingeschätzt» (ab 50 %) |
+| Beschreibung der Seite sprach von «echten Alltagsnachrichten», die Nachrichten sind aber nachgebildet | «realistischen Alltagsnachrichten» |
+| Beim Test gefunden: Hatte eine falsch beantwortete Phishing-Situation 4 Merkmale, verdrängten diese den Tipp «Echte nicht verdächtigen» einer falsch eingeschätzten echten Nachricht. | Dieser Tipp steht immer zuerst, weil es für einen Fehler bei echten Nachrichten nur diesen einen Tipp gibt. Danach folgen die übrigen Tipps nach Häufigkeit. |
+
+**Bewusst nicht geändert:**
+- Situation 1: Das Merkmal «Verdächtiger Link» erwähnt auch den kleinen Betrag. Der Text stammt so aus dem Wireframe «Erklärung».
+- Der Ring zeigt «7/10» und die Statistik «4 von 7»: Beides entspricht dem Wireframe «Resultat».
+
+### Tests Teil 3
+
+| Test (falsch beantwortete Situationen) | Ergebnis |
+|---|---|
+| 2 und 9 falsch: 8/10 «Sehr gut!», neuer Text, Tipps «Echte nicht verdächtigen, Bei Zeitdruck misstrauisch sein, Auf die Anrede achten, Absender prüfen» | erfüllt |
+| 1, 4, 6 falsch: 7/10, Tipps «Absender prüfen, Bei Zeitdruck misstrauisch sein, Links prüfen» | erfüllt |
+| 7, 8, 9 falsch (nur echte): Tipp «Echte nicht verdächtigen» | erfüllt |
+| Keine falsch: 10/10 «Perfekt!», Tipps ausgeblendet | erfüllt |
+| Alle falsch: 0/10 «Übe noch etwas», 4 Tipps, «Echte nicht verdächtigen» zuerst | erfüllt |
+| Erklärung bei Situation 2 mit 4 Merkmalen, bei Situation 9 mit «Erwartete Nachricht» | erfüllt |
+| Kein «ß» in Daten, HTML und JavaScript | erfüllt |

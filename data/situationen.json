@@ -10,8 +10,7 @@
     ],
     "link": {
       "text": "paket-zustellung-ch.info/z8841",
-      "ziel": "https://paket-zustellung-ch.info/z8841",
-      "alsKnopf": false
+      "ziel": "https://paket-zustellung-ch.info/z8841"
     },
     "istPhishing": true,
     "merkmale": [
@@ -85,7 +84,7 @@
     "unbekannterKontakt": true,
     "zeit": "21:47",
     "text": [
-      "Hallo Mama, das ist meine neue Nummer. Mein Handy ist kaputt gegangen.",
+      "Hallo Mama, das ist meine neue Nummer. Mein Handy ist kaputtgegangen.",
       "Kannst du mir schnell helfen? Ich muss heute noch eine Rechnung bezahlen, komme aber nicht ins E-Banking.",
       "Kannst du 480 Franken überweisen? Ich gebe es dir morgen zurück. Bitte schnell, es ist dringend!"
     ],
@@ -105,7 +104,7 @@
       {
         "titel": "Zeitdruck",
         "art": "zeitdruck",
-        "text": "«Bitte schnell, es ist dringend!» soll verhindern, dass man nachprüft."
+        "text": "«Bitte schnell, es ist dringend!» soll verhindern, dass deine Mutter zuerst nachprüft."
       }
     ],
     "reaktion": [
@@ -176,9 +175,14 @@
         "text": "Deine Bank kennt deinen Namen. «Sehr geehrter Kunde» passt zu einer Massen-E-Mail."
       },
       {
+        "titel": "Fremde Adressen",
+        "art": "absender",
+        "text": "Der Absender endet auf limmatbank-kundenservice.info, der Link führt zu limmatbank-sicherheit.info. Beides gehört nicht zur Bank."
+      },
+      {
         "titel": "Aufforderung zur Dateneingabe",
         "art": "daten",
-        "text": "Banken fragen nie per E-Mail nach Kontodaten oder Kreditkartennummern. Absender und Link-Ziel gehören nicht zur Bank."
+        "text": "Banken fragen nie per E-Mail nach Kontodaten oder Kreditkartennummern."
       }
     ],
     "reaktion": [
@@ -200,8 +204,7 @@
     ],
     "link": {
       "text": "help-instagram-support.info/einspruch",
-      "ziel": "http://help-instagram-support.info/einspruch/login",
-      "alsKnopf": false
+      "ziel": "http://help-instagram-support.info/einspruch/login"
     },
     "istPhishing": true,
     "merkmale": [
@@ -240,8 +243,8 @@
     "istPhishing": false,
     "merkmale": [
       {
-        "titel": "Bekannter Absender",
-        "text": "Die SMS kommt vom Paketdienst selbst und nicht von einer fremden Handynummer."
+        "titel": "Erwartete Nachricht",
+        "text": "Du wartest tatsächlich auf ein Paket. Der Absendername allein beweist aber nichts, denn er kann gefälscht werden."
       },
       {
         "titel": "Kein Zahlungsaufruf",

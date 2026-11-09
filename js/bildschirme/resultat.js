@@ -10,12 +10,12 @@ const BEWERTUNGEN = [
   {
     abAnteil: 0.8,
     titel: "Sehr gut!",
-    text: "Du erkennst fast alle Phishing-Versuche. Mit den Tipps unten klappt es beim nächsten Mal ganz.",
+    text: "Du hast fast alle Nachrichten richtig eingeschätzt. Mit den Tipps unten klappt es beim nächsten Mal ganz.",
   },
   {
     abAnteil: 0.5,
     titel: "Gut gemacht!",
-    text: "Du erkennst die meisten Phishing-Versuche. Mit den Tipps unten wirst du noch sicherer.",
+    text: "Du hast schon viele Nachrichten richtig eingeschätzt. Mit den Tipps unten wirst du noch sicherer.",
   },
   {
     abAnteil: 0,
@@ -86,10 +86,18 @@ function sammleTipps(antworten) {
     }
   }
 
-  return [...anzahlProTipp.entries()]
+  const tippsNachHaeufigkeit = [...anzahlProTipp.entries()]
     .sort(([, anzahlA], [, anzahlB]) => anzahlB - anzahlA)
-    .slice(0, MAXIMALE_ANZAHL_TIPPS)
     .map(([tipp]) => tipp);
+
+  return stelleTippZuEchtenZuerst(tippsNachHaeufigkeit).slice(0, MAXIMALE_ANZAHL_TIPPS);
+}
+
+function stelleTippZuEchtenZuerst(tipps) {
+  if (!tipps.includes(TIPP_ECHTE_NACHRICHTEN)) {
+    return tipps;
+  }
+  return [TIPP_ECHTE_NACHRICHTEN, ...tipps.filter((tipp) => tipp !== TIPP_ECHTE_NACHRICHTEN)];
 }
 
 function tippsZurSituation(situation) {

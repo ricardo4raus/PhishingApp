@@ -193,8 +193,10 @@ Alle Text-Hintergrund-Kombinationen erfüllen den Kontrast-Standard WCAG AA (min
 - Ring: SVG-Kreis mit `pathLength="100"`, der blaue Bogen ist so lang wie der Anteil richtiger Antworten in Prozent.
   Er füllt sich beim Erscheinen (0.9 s), bei «Bewegung reduzieren» ohne Animation.
 - Bewertung: 100 % «Perfekt!», ab 80 % «Sehr gut!», ab 50 % «Gut gemacht!», darunter «Übe noch etwas».
+  Die Texte dazu stehen in `BEWERTUNGEN` in `js/bildschirme/resultat.js` und sprechen von «Nachrichten», nicht nur von Phishing.
 - Tipps: aus den falsch beantworteten Situationen (Merkmal-Art → Tipp, echte Nachricht als Phishing → «Echte nicht verdächtigen»),
-  nach Häufigkeit sortiert, höchstens 4. Bei 10 von 10 ausgeblendet.
+  nach Häufigkeit sortiert, höchstens 4. «Echte nicht verdächtigen» steht immer zuerst, wenn eine echte Nachricht
+  falsch eingeschätzt wurde, weil es dafür nur diesen einen Tipp gibt. Bei 10 von 10 ausgeblendet.
 - Handy: eine Spalte wie im Wireframe. Desktop: links Ring mit Bewertung, rechts Statistik, Tipps und Knopf.
 
 ## Farbschema
