@@ -137,6 +137,7 @@ button {
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
+  overflow-x: clip;
 }
 
 .bildschirm {
@@ -914,10 +915,6 @@ button {
 
 /* ========== Bildschirm: Start ========== */
 
-.start__thema {
-  display: none;
-}
-
 .start__titel {
   font-size: 2.25rem;
   font-weight: 800;
@@ -939,27 +936,37 @@ button {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 40px 24px;
-  border-radius: var(--radius-karte);
-  background-color: var(--farbe-primaer-hell);
+  padding: 48px 40px;
 }
 
-.illustration__frage {
+.illustration__fragezeichen {
   position: absolute;
-  top: 16px;
-  right: 16px;
-  display: grid;
-  place-items: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background-color: var(--farbe-lila);
-  color: var(--farbe-text-auf-primaer);
-  font-size: 1.5rem;
+  color: var(--farbe-lila);
   font-weight: 800;
+  line-height: 1;
+  opacity: 0.15;
+}
+
+.illustration__fragezeichen--gross {
+  top: -8px;
+  right: 0;
+  font-size: 8rem;
+  transform: rotate(12deg);
+}
+
+.illustration__fragezeichen--mittel {
+  bottom: -16px;
+  left: 0;
+  font-size: 6rem;
+  transform: rotate(-12deg);
+}
+
+.illustration__fragezeichen--klein {
+  display: none;
 }
 
 .vorschau {
+  position: relative;
   display: none;
   padding: 16px 20px;
   border-radius: 18px;
@@ -1252,10 +1259,6 @@ button {
 
   /* Start */
 
-  .start__thema {
-    display: inline-flex;
-  }
-
   .start__titel {
     font-size: 4rem;
   }
@@ -1264,15 +1267,33 @@ button {
     order: 0;
   }
 
-  .illustration {
-    gap: 32px;
-    padding: 64px 48px;
+  .inhalt--start {
+    align-items: flex-start;
   }
 
-  .illustration__frage {
-    width: 64px;
-    height: 64px;
-    font-size: 2rem;
+  .illustration {
+    gap: 32px;
+    padding: 0 56px 64px;
+  }
+
+  .illustration__fragezeichen--gross {
+    top: -72px;
+    right: -16px;
+    font-size: 16rem;
+  }
+
+  .illustration__fragezeichen--mittel {
+    bottom: -40px;
+    left: -8px;
+    font-size: 12rem;
+  }
+
+  .illustration__fragezeichen--klein {
+    top: 30%;
+    left: 4px;
+    display: block;
+    font-size: 7rem;
+    transform: rotate(-8deg);
   }
 
   .vorschau {

@@ -223,3 +223,29 @@ Alle Text-Hintergrund-Kombinationen erfüllen den Kontrast-Standard WCAG AA (min
 - Hover-Farben der Antwort-Knöpfe nur bei Geräten mit Maus (`@media (hover: hover)`), damit auf dem Handy nichts eingefärbt hängen bleibt.
 - `.nur-desktop`: auf dem Handy nur optisch versteckt, für Screenreader weiterhin lesbar.
 - Daten: `ladeSituationen()` wirft einen Fehler, wenn die Datei keine Situationen enthält → Fehlermeldung.
+
+## Startseite
+
+- Links: Titel «Erkennst du den Fake?», Einleitung, Chips (Anzahl Situationen, Dauer, «mit Erklärung»), Knopf «Training starten».
+- Rechts (Handy: oben): drei Beispielnachrichten (SMS, E-Mail, Instagram) als Karten, leicht gekippt. Auf dem Handy nur die E-Mail.
+- Hinter den Karten stehen grosse, blasse Fragezeichen (`.illustration__fragezeichen`, Lila mit 15 % Deckkraft,
+  dekorativ und für Screenreader ausgeblendet).
+- Desktop: Titel und Beispielnachrichten oben bündig (`.inhalt--start`).
+- `#app` hat `overflow-x: clip`, damit die grossen Fragezeichen nie seitliches Scrollen auslösen.
+
+## Abweichungen von den Wireframes
+
+| Bildschirm | Wireframe | Umsetzung | Grund |
+|---|---|---|---|
+| Start | Chip «Training gegen Phishing» über dem Titel | entfernt | Gestaltungsentscheid, Titel wirkt stärker |
+| Start | Hellblaue Box mit «?»-Kreis um die Beispielnachrichten | grosse, blasse Fragezeichen hinter den Nachrichten | Gestaltungsentscheid, ruhigere Startseite |
+| Start | Titel senkrecht zur Grafik zentriert | oben bündig mit den Beispielnachrichten | Gestaltungsentscheid |
+| Start | Auswahl der Schwierigkeit, Link «Woran erkenne ich Phishing?» | nicht vorhanden | Kann-Funktionen, noch nicht umgesetzt |
+| Alle | – | Schalter für Hell-/Dunkelmodus oben rechts | Wunsch, das Farbschema selbst wählen zu können |
+| Situation | Kontext fehlt | Kontext-Box über der Nachricht | Echte Nachrichten wie der Login-Code sind ohne Kontext nicht lösbar |
+| Situation | Link ohne Prüfung | Vorschauzeile mit dem echten Link-Ziel | Link-Prüfung als Lerninhalt |
+| Situation (Desktop) | Frage und Knöpfe senkrecht zentriert | oben ausgerichtet, beim Scrollen sichtbar | Knöpfe springen sonst bei jeder Situation |
+| Erklärung | eigener Bildschirm nach jeder Antwort | noch nicht umgesetzt, Erklärung im Resultat bei «Deine Antworten» | in Arbeit |
+| Resultat | Knopf «Tipps ansehen» | nicht vorhanden | Tipps-Seite ist eine Kann-Funktion |
+| Resultat | – | Liste «Deine Antworten» mit allen Situationen | Wunsch, die Situationen am Ende nochmals anzusehen |
+| Resultat (Handy) | ohne Logo-Kopfzeile | mit Logo und Farbschema-Schalter | Schalter soll auf jedem Bildschirm erreichbar sein |
