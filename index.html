@@ -111,18 +111,11 @@
             <svg class="icon situation__icon-mail" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
             <span class="situation__kanal-name"></span>
           </p>
-          <p class="situation__kontext" hidden>
+          <p class="kontext situation__kontext" hidden>
             <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
-            <span class="situation__kontext-text"></span>
+            <span class="kontext__text"></span>
           </p>
           <div class="situation__nachricht"></div>
-          <p class="linkvorschau" aria-live="polite" hidden>
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-            <span class="linkvorschau__inhalt">
-              <span class="linkvorschau__hinweis">Fahre über den Link oder tippe darauf, um zu sehen, wohin er wirklich führt.</span>
-              <span class="linkvorschau__ziel"></span>
-            </span>
-          </p>
         </div>
 
         <div class="spalte spalte--haupt situation__entscheidung">
@@ -161,46 +154,110 @@
         </div>
       </header>
 
-      <main class="container inhalt inhalt--resultat">
-        <div class="spalte resultat__bewertung">
-          <p class="resultat__ueberschrift">Dein Resultat</p>
-          <div class="resultat__kreis">
-            <svg class="resultat__ring" viewBox="0 0 120 120" aria-hidden="true">
-              <circle class="resultat__ring-spur" cx="60" cy="60" r="52" pathLength="100"/>
-              <circle class="resultat__ring-wert" cx="60" cy="60" r="52" pathLength="100"/>
-            </svg>
-            <p class="resultat__punkte">
-              <span class="resultat__zahl"></span>
-              <span class="resultat__einheit">richtig</span>
-            </p>
+      <main class="resultat">
+        <div class="container inhalt inhalt--resultat">
+          <div class="spalte resultat__bewertung">
+            <p class="resultat__ueberschrift">Dein Resultat</p>
+            <div class="resultat__kreis">
+              <svg class="resultat__ring" viewBox="0 0 120 120" aria-hidden="true">
+                <circle class="resultat__ring-spur" cx="60" cy="60" r="52" pathLength="100"/>
+                <circle class="resultat__ring-wert" cx="60" cy="60" r="52" pathLength="100"/>
+              </svg>
+              <p class="resultat__punkte">
+                <span class="resultat__zahl"></span>
+                <span class="resultat__einheit">richtig</span>
+              </p>
+            </div>
+            <h1 class="resultat__titel"></h1>
+            <p class="resultat__text"></p>
           </div>
-          <h1 class="resultat__titel"></h1>
-          <p class="resultat__text"></p>
+
+          <div class="spalte spalte--haupt resultat__details">
+            <div class="resultat__statistik">
+              <p class="statistik">
+                <span class="statistik__name">Phishing erkannt</span>
+                <span class="statistik__wert resultat__phishing-erkannt"></span>
+              </p>
+              <p class="statistik">
+                <span class="statistik__name">Echte erkannt</span>
+                <span class="statistik__wert resultat__echte-erkannt"></span>
+              </p>
+            </div>
+            <div class="resultat__tipps">
+              <h2 class="resultat__tipps-titel">Darauf solltest du achten</h2>
+              <ul class="chips resultat__tipps-liste"></ul>
+            </div>
+            <div class="aktionen">
+              <button class="button button--primaer resultat__nochmals" type="button">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                Nochmals spielen
+              </button>
+            </div>
+          </div>
         </div>
 
-        <div class="spalte spalte--haupt resultat__details">
-          <div class="resultat__statistik">
-            <p class="statistik">
-              <span class="statistik__name">Phishing erkannt</span>
-              <span class="statistik__wert resultat__phishing-erkannt"></span>
-            </p>
-            <p class="statistik">
-              <span class="statistik__name">Echte erkannt</span>
-              <span class="statistik__wert resultat__echte-erkannt"></span>
-            </p>
-          </div>
-          <div class="resultat__tipps">
-            <h2 class="resultat__tipps-titel">Darauf solltest du achten</h2>
-            <ul class="chips resultat__tipps-liste"></ul>
-          </div>
-          <div class="aktionen">
-            <button class="button button--primaer resultat__nochmals" type="button">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
-              Nochmals spielen
-            </button>
-          </div>
-        </div>
+        <section class="container antworten" aria-labelledby="antworten-titel">
+          <h2 class="antworten__titel" id="antworten-titel">Deine Antworten</h2>
+          <p class="antworten__hinweis">Öffne eine Situation, um die Nachricht nochmals zu sehen. Bei Fehlern steht, woran du es erkennst und wie du richtig reagierst.</p>
+          <ol class="antworten__liste"></ol>
+        </section>
       </main>
+    </template>
+
+    <template id="vorlage-antwort-eintrag">
+      <li class="antwort-eintrag">
+        <details class="antwort-eintrag__details">
+          <summary class="antwort-eintrag__zusammenfassung">
+            <span class="antwort-eintrag__status">
+              <svg class="icon antwort-eintrag__icon-richtig" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              <svg class="icon antwort-eintrag__icon-falsch" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </span>
+            <span class="antwort-eintrag__beschreibung">
+              <span class="antwort-eintrag__titel"></span>
+              <span class="antwort-eintrag__ergebnis"></span>
+            </span>
+            <svg class="icon antwort-eintrag__pfeil" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="antwort-eintrag__inhalt">
+            <div class="antwort-eintrag__situation">
+              <p class="kontext antwort-eintrag__kontext" hidden>
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                <span class="kontext__text"></span>
+              </p>
+              <div class="antwort-eintrag__nachricht"></div>
+            </div>
+          </div>
+        </details>
+      </li>
+    </template>
+
+    <template id="vorlage-erklaerung">
+      <div class="erklaerung">
+        <h3 class="erklaerung__titel"></h3>
+        <ol class="erklaerung__merkmale"></ol>
+        <div class="reaktion">
+          <h3 class="reaktion__titel">So reagierst du richtig</h3>
+          <ul class="reaktion__liste"></ul>
+        </div>
+      </div>
+    </template>
+
+    <template id="vorlage-merkmal">
+      <li class="merkmal">
+        <span class="merkmal__nummer" aria-hidden="true"></span>
+        <p class="merkmal__titel"></p>
+        <p class="merkmal__text"></p>
+      </li>
+    </template>
+
+    <template id="vorlage-linkvorschau">
+      <p class="linkvorschau" aria-live="polite" hidden>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        <span class="linkvorschau__inhalt">
+          <span class="linkvorschau__hinweis">Fahre über den Link oder tippe darauf, um zu sehen, wohin er wirklich führt.</span>
+          <span class="linkvorschau__ziel"></span>
+        </span>
+      </p>
     </template>
 
     <template id="vorlage-sms">

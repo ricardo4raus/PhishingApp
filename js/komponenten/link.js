@@ -1,3 +1,5 @@
+import { erstelleAusVorlage } from "../vorlagen.js";
+
 const AKTIV = "linkvorschau--aktiv";
 
 export function erstelleLink(link) {
@@ -7,6 +9,10 @@ export function erstelleLink(link) {
   knopf.textContent = link.text;
   knopf.dataset.ziel = link.ziel;
   return knopf;
+}
+
+export function erstelleLinkVorschau() {
+  return erstelleAusVorlage("vorlage-linkvorschau").firstElementChild;
 }
 
 export function verbindeLinkVorschau(nachricht, vorschau) {

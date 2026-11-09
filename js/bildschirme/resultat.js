@@ -1,4 +1,5 @@
 import { erstelleAusVorlage } from "../vorlagen.js";
+import { erstelleAntwortEintrag } from "../komponenten/antwort-eintrag.js";
 
 const BEWERTUNGEN = [
   {
@@ -53,6 +54,7 @@ export function erstelleResultatBildschirm({ antworten, beimNochmalsSpielen }) {
   zeigeErkannte(bildschirm, ".resultat__phishing-erkannt", antworten.filter((antwort) => antwort.situation.istPhishing));
   zeigeErkannte(bildschirm, ".resultat__echte-erkannt", antworten.filter((antwort) => !antwort.situation.istPhishing));
   zeigeTipps(bildschirm, sammleTipps(antworten));
+  zeigeAntworten(bildschirm, antworten);
 
   bildschirm.querySelector(".resultat__nochmals").addEventListener("click", beimNochmalsSpielen);
 
@@ -108,4 +110,11 @@ function zeigeTipps(bildschirm, tipps) {
     eintrag.textContent = tipp;
     liste.append(eintrag);
   }
+}
+
+function zeigeAntworten(bildschirm, antworten) {
+  const liste = bildschirm.querySelector(".antworten__liste");
+  antworten.forEach((antwort, index) => {
+    liste.append(erstelleAntwortEintrag(antwort, index + 1));
+  });
 }

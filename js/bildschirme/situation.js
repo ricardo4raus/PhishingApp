@@ -1,24 +1,15 @@
 import { erstelleAusVorlage } from "../vorlagen.js";
-import { erstelleSms } from "../komponenten/sms.js";
-import { erstelleEmail } from "../komponenten/email.js";
-import { erstelleWhatsapp } from "../komponenten/whatsapp.js";
-import { erstelleInstagram } from "../komponenten/instagram.js";
-import { verbindeLinkVorschau, bereiteLinkVorschauVor } from "../komponenten/link.js";
-
-const NACHRICHT_PRO_KANAL = {
-  "SMS": erstelleSms,
-  "E-Mail": erstelleEmail,
-  "WhatsApp": erstelleWhatsapp,
-  "Instagram": erstelleInstagram,
-};
+import { erstelleNachricht } from "../komponenten/nachricht.js";
+import { zeigeKontext } from "../komponenten/kontext.js";
+import { erstelleLinkVorschau, verbindeLinkVorschau, bereiteLinkVorschauVor } from "../komponenten/link.js";
 
 export function erstelleSituationBildschirm({ beiAntwort, beimBeenden }) {
   const bildschirm = erstelleAusVorlage("vorlage-situation");
 
-  verbindeLinkVorschau(
-    bildschirm.querySelector(".situation__nachricht"),
-    bildschirm.querySelector(".linkvorschau"),
-  );
+  const nachricht = bildschirm.querySelector(".situation__nachricht");
+  const vorschau = erstelleLinkVorschau();
+  nachricht.after(vorschau);
+  verbindeLinkVorschau(nachricht, vorschau);
 
   bildschirm.querySelector(".situation__echt").addEventListener("click", () => beiAntwort("echt"));
   bildschirm.querySelector(".situation__phishing").addEventListener("click", () => beiAntwort("phishing"));
@@ -31,7 +22,7 @@ export function aktualisiereSituation(bildschirm, { situation, nummer, anzahl, p
   zeigeFortschritt(bildschirm, nummer, anzahl);
   zeigePunkte(bildschirm, punkte);
   zeigeKanal(bildschirm, situation.kanal);
-  zeigeKontext(bildschirm, situation.kontext);
+  zeigeKontext(bildschirm.querySelector(".situation__kontext"), situation.kontext);
   zeigeNachricht(bildschirm, situation);
 }
 
@@ -56,14 +47,7 @@ function zeigeKanal(bildschirm, kanal) {
   anzeige.querySelector(".situation__kanal-name").textContent = kanal;
 }
 
-function zeigeKontext(bildschirm, kontext) {
-  const element = bildschirm.querySelector(".situation__kontext");
-  element.hidden = !kontext;
-  element.querySelector(".situation__kontext-text").textContent = kontext ?? "";
-}
-
 function zeigeNachricht(bildschirm, situation) {
-  const erstelleNachricht = NACHRICHT_PRO_KANAL[situation.kanal];
   bildschirm.querySelector(".situation__nachricht").replaceChildren(erstelleNachricht(situation));
   bereiteLinkVorschauVor(bildschirm.querySelector(".linkvorschau"), situation.link);
 }

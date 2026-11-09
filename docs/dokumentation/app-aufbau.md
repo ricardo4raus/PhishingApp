@@ -20,6 +20,7 @@ Was wann geändert wurde, steht im [Änderungsprotokoll](aenderungsprotokoll.md)
 | Fehlermeldung, wenn die Situationen nicht geladen werden können | umgesetzt |
 | Auswertung mit Erklärung der Merkmale und der richtigen Reaktion | **noch offen** (Daten sind schon vorhanden) |
 | Resultat am Ende: Ring mit Punktzahl, Bewertung, Phishing erkannt x von y, Echte erkannt x von y, Tipps aus den Fehlern, «Nochmals spielen» | umgesetzt |
+| «Deine Antworten»: alle Situationen nochmals ansehen, richtig/falsch, bei Fehlern Merkmale und richtige Reaktion | umgesetzt |
 | Tipps-Seite «Woran erkenne ich Phishing?» (Kann-Funktion) | **noch offen**, darum kein Knopf «Tipps ansehen» |
 
 Solange die Auswertung fehlt, springt die App nach einer Antwort direkt zur nächsten Situation.
@@ -59,12 +60,16 @@ Bei «Bewegung reduzieren» (`prefers-reduced-motion`) sind alle Animationen aus
 | `js/vorlagen.js` | Erstellt eine Kopie einer Vorlage aus `index.html` |
 | `js/bildschirme/start.js` | Startbildschirm |
 | `js/bildschirme/situation.js` | Situationsbildschirm: `erstelleSituationBildschirm()` (einmal) und `aktualisiereSituation()` (pro Situation), wählt die passende Nachrichten-Komponente nach Kanal |
-| `js/bildschirme/resultat.js` | Resultat-Bildschirm: Bewertung, Ring, Statistik, Tipps |
+| `js/bildschirme/resultat.js` | Resultat-Bildschirm: Bewertung, Ring, Statistik, Tipps, Liste «Deine Antworten» |
+| `js/komponenten/nachricht.js` | Wählt die Darstellung nach Kanal (`NACHRICHT_PRO_KANAL`), verwendet von Situation und Resultat |
+| `js/komponenten/kontext.js` | Zeigt oder versteckt die Kontext-Box |
+| `js/komponenten/erklaerung.js` | Merkmale («Woran du es erkennst») und richtige Reaktion |
+| `js/komponenten/antwort-eintrag.js` | Ein aufklappbarer Eintrag in «Deine Antworten» |
 | `js/komponenten/sms.js` | Darstellung einer SMS |
 | `js/komponenten/email.js` | Darstellung einer E-Mail |
 | `js/komponenten/whatsapp.js` | Darstellung eines WhatsApp-Chats |
 | `js/komponenten/instagram.js` | Darstellung einer Instagram-Direktnachricht |
-| `js/komponenten/link.js` | Link in einer Nachricht und Vorschauzeile mit dem echten Link-Ziel |
+| `js/komponenten/link.js` | Link in einer Nachricht, Vorschauzeile mit dem echten Link-Ziel (eigene Vorlage `vorlage-linkvorschau`) |
 
 ## Wie eine Komponente aufgebaut ist
 
@@ -195,3 +200,11 @@ Alle Text-Hintergrund-Kombinationen erfüllen den Kontrast-Standard WCAG AA (min
 - Reihenfolge: gespeicherte eigene Wahl (`localStorage`, Schlüssel `farbschema`) → sonst Geräteeinstellung.
 - Der Schalter (`.farbschema-knopf`) steht in jeder Kopfzeile. Ein Klick-Listener auf dem Dokument wechselt das Schema.
 - Im CSS stehen die hellen Farben in `:root`, die dunklen in `:root[data-farbschema="dunkel"]` (inkl. `color-scheme`).
+
+## «Deine Antworten» im Resultat
+
+- Eine `<ol>` mit einem Eintrag pro Situation, in der gespielten Reihenfolge (`erstelleAntwortEintrag`).
+- Jeder Eintrag ist ein `<details>`: Die Zusammenfassung zeigt ✓ oder ✗, Titel (Kanal und Betreff bzw. Absender) und das
+  Ergebnis als Text. Aufgeklappt: Kontext, die Nachricht mit Link-Prüfung und bei Fehlern die Erklärung (`erstelleErklaerung`).
+- Richtig/falsch wird über Symbol, Text und Randfarbe gezeigt (`.antwort-eintrag--richtig` / `--falsch`).
+- Desktop: aufgeklappter Eintrag in zwei Spalten (Nachricht links, Erklärung rechts).

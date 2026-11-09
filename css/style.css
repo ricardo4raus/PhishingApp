@@ -83,7 +83,9 @@ body {
 
 h1,
 h2,
+h3,
 p,
+ol,
 ul {
   margin: 0;
 }
@@ -290,6 +292,190 @@ button {
 
 [data-farbschema="dunkel"] .farbschema-knopf__sonne {
   display: block;
+}
+
+.kontext {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background-color: var(--farbe-primaer-hell);
+  font-size: 0.9375rem;
+}
+
+.kontext .icon {
+  margin-top: 2px;
+  color: var(--farbe-primaer);
+}
+
+/* ---------- Erklärung (Merkmale und richtige Reaktion) ---------- */
+
+.erklaerung {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.erklaerung__titel,
+.reaktion__titel {
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+
+.erklaerung__merkmale {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 0;
+  list-style: none;
+}
+
+.merkmal {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  column-gap: 12px;
+}
+
+.merkmal__nummer {
+  display: grid;
+  grid-row: span 2;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--farbe-lila-hell);
+  color: var(--farbe-lila);
+  font-weight: 700;
+}
+
+.merkmal__titel {
+  font-weight: 700;
+}
+
+.merkmal__text {
+  color: var(--farbe-text-gedaempft);
+}
+
+.reaktion {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 20px;
+  border-radius: var(--radius-button);
+  background-color: var(--farbe-primaer-hell);
+}
+
+.reaktion__titel {
+  color: var(--farbe-primaer);
+}
+
+.reaktion__liste {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-left: 20px;
+}
+
+/* ---------- Eintrag in der Liste «Deine Antworten» ---------- */
+
+.antwort-eintrag {
+  border: 1px solid var(--farbe-rahmen);
+  border-left-width: 6px;
+  border-radius: var(--radius-button);
+  background-color: var(--farbe-hintergrund);
+}
+
+.antwort-eintrag--richtig {
+  border-left-color: var(--farbe-richtig);
+}
+
+.antwort-eintrag--falsch {
+  border-left-color: var(--farbe-falsch);
+}
+
+.antwort-eintrag__zusammenfassung {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: var(--groesse-touch);
+  padding: 12px 16px;
+  list-style: none;
+  cursor: pointer;
+}
+
+.antwort-eintrag__zusammenfassung::-webkit-details-marker {
+  display: none;
+}
+
+.antwort-eintrag__status {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.antwort-eintrag--richtig .antwort-eintrag__status {
+  background-color: var(--farbe-richtig-hell);
+  color: var(--farbe-richtig);
+}
+
+.antwort-eintrag--falsch .antwort-eintrag__status {
+  background-color: var(--farbe-falsch-hell);
+  color: var(--farbe-falsch);
+}
+
+.antwort-eintrag--richtig .antwort-eintrag__icon-falsch,
+.antwort-eintrag--falsch .antwort-eintrag__icon-richtig {
+  display: none;
+}
+
+.antwort-eintrag__beschreibung {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.antwort-eintrag__titel {
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.antwort-eintrag__ergebnis {
+  font-size: 0.9375rem;
+}
+
+.antwort-eintrag--richtig .antwort-eintrag__ergebnis {
+  color: var(--farbe-richtig);
+}
+
+.antwort-eintrag--falsch .antwort-eintrag__ergebnis {
+  color: var(--farbe-falsch);
+}
+
+.antwort-eintrag__pfeil {
+  color: var(--farbe-text-gedaempft);
+  transition: transform 200ms;
+}
+
+.antwort-eintrag__details[open] .antwort-eintrag__pfeil {
+  transform: rotate(180deg);
+}
+
+.antwort-eintrag__inhalt {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 4px 16px 20px;
+}
+
+.antwort-eintrag__situation {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 /* ---------- Link in einer Nachricht ---------- */
@@ -820,20 +1006,6 @@ button {
   color: var(--farbe-text-gedaempft);
 }
 
-.situation__kontext {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  padding: 12px 14px;
-  border-radius: 12px;
-  background-color: var(--farbe-primaer-hell);
-  font-size: 0.9375rem;
-}
-
-.situation__kontext .icon {
-  margin-top: 2px;
-  color: var(--farbe-primaer);
-}
 
 /* ========== Bildschirm: Resultat ========== */
 
@@ -954,6 +1126,34 @@ button {
   font-weight: 700;
 }
 
+.resultat {
+  flex: 1;
+}
+
+.antworten {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 48px;
+}
+
+.antworten__titel {
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.antworten__hinweis {
+  color: var(--farbe-text-gedaempft);
+}
+
+.antworten__liste {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0;
+  list-style: none;
+}
+
 /* ========== Sehr schmale Handys (unter 360 px) ========== */
 
 @media (max-width: 359px) {
@@ -966,7 +1166,8 @@ button {
 
 @media (prefers-reduced-motion: reduce) {
   .fortschritt__balken,
-  .linkvorschau {
+  .linkvorschau,
+  .antwort-eintrag__pfeil {
     transition: none;
   }
 
@@ -1023,6 +1224,13 @@ button {
 
   .resultat__details {
     gap: 24px;
+  }
+
+  .antwort-eintrag__inhalt {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 32px;
   }
 
   .situation__entscheidung {

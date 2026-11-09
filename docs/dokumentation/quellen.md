@@ -31,3 +31,4 @@ Autor: Ricardo Kraus · Format wie im Quellenverzeichnis der Begleitdokumentatio
 | Hell-/Dunkelmodus und eigene Wahl | https://web.dev/articles/prefers-color-scheme | 09.11.2026 |
 | Speichern im Browser (`localStorage`) | https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage | 09.11.2026 |
 | SVG-Kreis mit `pathLength` | https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/pathLength | 09.11.2026 |
+| Aufklappbare Bereiche (`<details>`, `<summary>`) | https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details | 09.11.2026 |
