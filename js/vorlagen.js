@@ -1,4 +1,4 @@
 export function erstelleAusVorlage(vorlagenId) {
-  const vorlage = document.querySelector(`#${vorlagenId}`);
-  return document.importNode(vorlage.content, true);
+  const vorlage = document.getElementById(vorlagenId);
+  return document.importNode(vorlage.content.firstElementChild, true);
 }

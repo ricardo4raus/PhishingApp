@@ -30,6 +30,8 @@
 
   --radius-button: 16px;
   --radius-karte: 24px;
+  --radius-klein: 12px;
+  --radius-rund: 999px;
   --abstand-seite: 24px;
   --breite-inhalt: 1200px;
   --groesse-touch: 48px;
@@ -137,6 +139,12 @@ button {
   flex-direction: column;
 }
 
+.bildschirm {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
 .container {
   width: 100%;
   max-width: var(--breite-inhalt);
@@ -194,7 +202,7 @@ button {
   place-items: center;
   width: 40px;
   height: 40px;
-  border-radius: 12px;
+  border-radius: var(--radius-klein);
   background-color: var(--farbe-primaer);
   color: var(--farbe-text-auf-primaer);
 }
@@ -244,7 +252,7 @@ button {
   width: fit-content;
   padding: 6px 14px;
   border: 1px solid var(--farbe-rahmen);
-  border-radius: 999px;
+  border-radius: var(--radius-rund);
   background-color: var(--farbe-flaeche);
   font-weight: 500;
 }
@@ -265,7 +273,7 @@ button {
 .fortschritt {
   width: 100%;
   height: 8px;
-  border-radius: 999px;
+  border-radius: var(--radius-rund);
   background-color: var(--farbe-rahmen);
   overflow: hidden;
 }
@@ -273,7 +281,7 @@ button {
 .fortschritt__balken {
   width: 0;
   height: 100%;
-  border-radius: 999px;
+  border-radius: var(--radius-rund);
   background-color: var(--farbe-primaer);
   transition: width 400ms ease-out;
 }
@@ -295,11 +303,11 @@ button {
 }
 
 .farbschema-knopf__sonne,
-[data-farbschema="dunkel"] .farbschema-knopf__mond {
+:root[data-farbschema="dunkel"] .farbschema-knopf__mond {
   display: none;
 }
 
-[data-farbschema="dunkel"] .farbschema-knopf__sonne {
+:root[data-farbschema="dunkel"] .farbschema-knopf__sonne {
   display: block;
 }
 
@@ -308,7 +316,7 @@ button {
   align-items: flex-start;
   gap: 8px;
   padding: 12px 14px;
-  border-radius: 12px;
+  border-radius: var(--radius-klein);
   background-color: var(--farbe-primaer-hell);
   font-size: 0.9375rem;
 }
@@ -523,7 +531,7 @@ button {
   gap: 8px;
   padding: 10px 14px;
   border: 1px dashed var(--farbe-rahmen);
-  border-radius: 12px;
+  border-radius: var(--radius-klein);
   color: var(--farbe-text-gedaempft);
   font-size: 0.875rem;
   transition: background-color 150ms, color 150ms;
@@ -854,6 +862,8 @@ button {
   background-color: var(--farbe-instagram-blase);
 }
 
+/* ---------- Antwort-Knöpfe «Echt» und «Phishing» ---------- */
+
 .antwort {
   flex: 1;
   display: flex;
@@ -891,6 +901,8 @@ button {
     background-color: var(--farbe-lila-hell);
   }
 }
+
+/* ---------- Fehlermeldung ---------- */
 
 .fehlermeldung {
   padding: 20px;
@@ -1171,6 +1183,14 @@ button {
   .situation__zaehler-wort {
     display: none;
   }
+
+  .logo__name {
+    font-size: 1rem;
+  }
+
+  .resultat__statistik {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ========== Weniger Bewegung (Systemeinstellung) ========== */
@@ -1191,6 +1211,8 @@ button {
 /* ========== Desktop (ab 900 px) ========== */
 
 @media (min-width: 900px) {
+  /* Grundlagen und Seitenaufbau */
+
   .nur-desktop {
     position: static;
     width: auto;
@@ -1216,43 +1238,6 @@ button {
     padding-block: 64px;
   }
 
-  .inhalt--situation {
-    align-items: flex-start;
-  }
-
-  .resultat__ueberschrift {
-    color: var(--farbe-text-gedaempft);
-  }
-
-  .resultat__kreis {
-    width: 240px;
-    height: 240px;
-  }
-
-  .resultat__zahl {
-    font-size: 4.5rem;
-  }
-
-  .resultat__titel {
-    font-size: 3rem;
-  }
-
-  .resultat__details {
-    gap: 24px;
-  }
-
-  .antwort-eintrag__inhalt {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: start;
-    gap: 32px;
-  }
-
-  .situation__entscheidung {
-    position: sticky;
-    top: 32px;
-  }
-
   .spalte {
     flex: 1;
   }
@@ -1264,6 +1249,8 @@ button {
   .button--primaer {
     width: auto;
   }
+
+  /* Start */
 
   .start__thema {
     display: inline-flex;
@@ -1292,16 +1279,22 @@ button {
     display: block;
   }
 
-  .vorschau:nth-of-type(1) {
+  .vorschau--links {
     transform: rotate(-2deg);
   }
 
-  .vorschau:nth-of-type(2) {
+  .vorschau--eingerueckt {
     margin-left: 48px;
   }
 
-  .vorschau:nth-of-type(3) {
+  .vorschau--rechts {
     transform: rotate(1.5deg);
+  }
+
+  /* Situation */
+
+  .inhalt--situation {
+    align-items: flex-start;
   }
 
   .situation__zaehler {
@@ -1313,7 +1306,42 @@ button {
     flex: 1;
   }
 
+  .situation__entscheidung {
+    position: sticky;
+    top: 32px;
+  }
+
   .situation__frage {
     font-size: 2.5rem;
+  }
+
+  /* Resultat */
+
+  .resultat__ueberschrift {
+    color: var(--farbe-text-gedaempft);
+  }
+
+  .resultat__kreis {
+    width: 240px;
+    height: 240px;
+  }
+
+  .resultat__zahl {
+    font-size: 4.5rem;
+  }
+
+  .resultat__titel {
+    font-size: 3rem;
+  }
+
+  .resultat__details {
+    gap: 24px;
+  }
+
+  .antwort-eintrag__inhalt {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 32px;
   }
 }

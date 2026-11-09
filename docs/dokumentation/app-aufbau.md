@@ -39,7 +39,8 @@ Schalter oben rechts → wechsleFarbschema() (in farbschema.js, unabhängig vom 
 ```
 
 Der Zustand steht in einem einzigen Objekt in `js/app.js`: `{ situationen, index, punkte, antworten }`.
-Nur `app.js` entscheidet, welcher Bildschirm gezeigt wird.
+Nur `app.js` entscheidet, welcher Bildschirm gezeigt wird. Den Situationsbildschirm merkt sich `app.js` in der
+Variable `situationsBildschirm`, damit er für jede Situation aktualisiert werden kann.
 
 **Situationsbildschirm wird nicht neu aufgebaut:** `erstelleSituationBildschirm()` baut Kopfzeile, Spalten und Knöpfe
 einmal beim Start des Trainings. `zeigeSituation()` ruft danach nur `aktualisiereSituation()` auf, das Zähler,
@@ -57,7 +58,7 @@ Bei «Bewegung reduzieren» (`prefers-reduced-motion`) sind alle Animationen aus
 | `js/farbschema.js` | Setzt das Farbschema (hell/dunkel) vor dem Zeichnen der Seite, Schalter, Speichern der Wahl. Normales Script im `<head>`, kein Modul |
 | `js/app.js` | Zustand und Ablauf |
 | `js/daten.js` | Lädt die Situationen mit `fetch` (einzige Stelle, an der Daten geladen werden) |
-| `js/vorlagen.js` | Erstellt eine Kopie einer Vorlage aus `index.html` |
+| `js/vorlagen.js` | Erstellt eine Kopie einer Vorlage aus `index.html` und gibt ihr Wurzelelement zurück |
 | `js/bildschirme/start.js` | Startbildschirm |
 | `js/bildschirme/situation.js` | Situationsbildschirm: `erstelleSituationBildschirm()` (einmal) und `aktualisiereSituation()` (pro Situation), wählt die passende Nachrichten-Komponente nach Kanal |
 | `js/bildschirme/resultat.js` | Resultat-Bildschirm: Bewertung, Ring, Statistik, Tipps, Liste «Deine Antworten» |
@@ -74,7 +75,8 @@ Bei «Bewegung reduzieren» (`prefers-reduced-motion`) sind alle Animationen aus
 ## Wie eine Komponente aufgebaut ist
 
 1. Das HTML steht als `<template>` in `index.html`.
-2. Die JavaScript-Datei kopiert die Vorlage mit `erstelleAusVorlage(…)`.
+2. Die JavaScript-Datei kopiert die Vorlage mit `erstelleAusVorlage(…)` und bekommt ihr Wurzelelement zurück.
+   Jede Vorlage hat genau ein Wurzelelement, bei Bildschirmen `<div class="bildschirm">`.
 3. Texte werden nur mit `textContent` oder `append(text)` eingefügt, nie mit `innerHTML` (Schutz vor XSS).
 4. Wiederholte Teile (Sprechblasen, Absätze) werden mit `document.createElement` erzeugt.
 5. Die Funktion gibt das fertige Element zurück. Bildschirme bekommen Funktionen wie `beiAntwort` übergeben

@@ -8,7 +8,7 @@ export function erstelleAntwortEintrag(antwort, nummer) {
   const { situation, istRichtig } = antwort;
   const eintrag = erstelleAusVorlage("vorlage-antwort-eintrag");
 
-  eintrag.querySelector(".antwort-eintrag").classList.add(istRichtig ? "antwort-eintrag--richtig" : "antwort-eintrag--falsch");
+  eintrag.classList.add(istRichtig ? "antwort-eintrag--richtig" : "antwort-eintrag--falsch");
   eintrag.querySelector(".antwort-eintrag__titel").textContent = `${nummer}. ${situation.kanal}: ${situation.betreff ?? situation.absender}`;
   eintrag.querySelector(".antwort-eintrag__ergebnis").textContent = beschreibeErgebnis(antwort);
 

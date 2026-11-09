@@ -34,3 +34,27 @@ getestet. Die Überarbeitung ist in drei Teile aufgeteilt, jeder Teil hat einen 
 | «Punkte» auf dem Handy optisch versteckt, aber im Text vorhanden; auf dem Desktop sichtbar | erfüllt |
 | Leere Datendatei → Fehlermeldung statt Absturz | erfüllt |
 | Ganzer Ablauf bis zum Resultat | erfüllt |
+
+## Teil 2: Code vereinfacht und CSS aufgeräumt
+
+| Befund | Lösung |
+|---|---|
+| `aktualisiereSituation(app, …)` bekam den ganzen Seitencontainer statt den Bildschirm. Das funktionierte nur, weil die eingefügte Vorlage danach leer war, und war schwer zu erklären. | Jede Bildschirm-Vorlage hat jetzt genau ein Wurzelelement (`<div class="bildschirm">`). `erstelleAusVorlage()` gibt dieses Element zurück, und `app.js` merkt sich den Situationsbildschirm in der Variable `situationsBildschirm`. |
+| `erstelleAusVorlage()` baute einen Selektor mit `#` zusammen | Einfacher mit `document.getElementById()` |
+| Regeln für Antwort-Knöpfe und Fehlermeldung standen unter der Überschrift «Instagram» | Eigene Abschnitte im CSS |
+| Desktop-Block durcheinander (Resultat, Situation, Start gemischt) | Gleiche Reihenfolge wie der Rest der Datei: Seitenaufbau, Start, Situation, Resultat |
+| Gleiche Rundungen mehrfach als Zahl (12px, 999px) | Variablen `--radius-klein` und `--radius-rund` |
+| Vorschau-Karten auf der Startseite über `:nth-of-type(1/2/3)` gestaltet | Sprechende Modifikatoren `vorschau--links`, `vorschau--eingerueckt`, `vorschau--rechts` |
+| Selektor für das dunkle Farbschema beim Schalter anders geschrieben als bei den Farben | Überall `:root[data-farbschema="dunkel"]` |
+| Bei 320 px Breite rutschte der Schalter unter das Logo und «4 von 7» brach um | Unter 360 px kleinere Logo-Schrift und Statistik untereinander |
+
+### Tests Teil 2
+
+| Test | Ergebnis |
+|---|---|
+| Ganzer Ablauf mit allen 10 Situationen, Kopfzeile bleibt dasselbe Element | erfüllt |
+| Link-Vorschau ohne Layout-Verschiebung, Fokus auf der Nachricht | erfüllt |
+| Resultat mit 10 Einträgen, Erklärung beim falschen Eintrag, «Nochmals spielen» | erfüllt |
+| Farbschema-Schalter | erfüllt |
+| Startseite Desktop (gekippte Vorschau-Karten) unverändert | geprüft |
+| Resultat bei 320 px: Kopfzeile auf einer Zeile, Statistik untereinander | geprüft |

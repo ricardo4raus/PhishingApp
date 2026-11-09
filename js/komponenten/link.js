@@ -13,7 +13,7 @@ export function erstelleLink(link) {
 }
 
 export function erstelleLinkVorschau() {
-  const vorschau = erstelleAusVorlage("vorlage-linkvorschau").firstElementChild;
+  const vorschau = erstelleAusVorlage("vorlage-linkvorschau");
   vorschau.querySelector(".linkvorschau__ziel").id = `linkziel-${naechsteVorschauNummer}`;
   naechsteVorschauNummer += 1;
   return vorschau;

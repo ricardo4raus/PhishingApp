@@ -13,10 +13,12 @@ const zustand = {
   antworten: [],
 };
 
+let situationsBildschirm;
+
 function zeige(bildschirm) {
   app.replaceChildren(bildschirm);
   window.scrollTo(0, 0);
-  app.querySelector("h1")?.focus({ preventScroll: true });
+  bildschirm.querySelector("h1")?.focus({ preventScroll: true });
 }
 
 function zeigeStart() {
@@ -33,24 +35,23 @@ function starteTraining() {
   zustand.punkte = 0;
   zustand.antworten = [];
 
-  zeige(
-    erstelleSituationBildschirm({
-      beiAntwort: werteAntwortAus,
-      beimBeenden: beendeTraining,
-    }),
-  );
+  situationsBildschirm = erstelleSituationBildschirm({
+    beiAntwort: werteAntwortAus,
+    beimBeenden: beendeTraining,
+  });
+  zeige(situationsBildschirm);
   zeigeSituation();
 }
 
 function zeigeSituation() {
-  aktualisiereSituation(app, {
+  aktualisiereSituation(situationsBildschirm, {
     situation: zustand.situationen[zustand.index],
     nummer: zustand.index + 1,
     anzahl: zustand.situationen.length,
     punkte: zustand.punkte,
   });
   window.scrollTo(0, 0);
-  app.querySelector(".situation__nachricht").focus({ preventScroll: true });
+  situationsBildschirm.querySelector(".situation__nachricht").focus({ preventScroll: true });
 }
 
 function werteAntwortAus(antwort) {
