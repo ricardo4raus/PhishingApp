@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "kanal": "SMS",
+    "absender": "+44 7700 900461",
+    "zeit": "Heute, 09:14",
+    "text": "Ihr Paket konnte nicht zugestellt werden. Bitte bestätigen Sie die Zustellgebühr von CHF 1.95 innerhalb von 24 Std., sonst wird es zurückgeschickt:",
+    "link": "paket-zustellung-ch.info/z8841",
+    "istPhishing": true,
+    "merkmale": [
+      {
+        "titel": "Unbekannter Absender",
+        "text": "Paketdienste schreiben nicht von ausländischen Handynummern."
+      },
+      {
+        "titel": "Zeitdruck",
+        "text": "«Innerhalb von 24 Std.» soll dich zu einer schnellen Reaktion drängen."
+      },
+      {
+        "titel": "Verdächtiger Link",
+        "text": "Die Adresse gehört nicht zum echten Paketdienst. Der kleine Betrag soll harmlos wirken."
+      }
+    ],
+    "reaktion": [
+      "Nicht auf den Link klicken",
+      "Nachricht löschen",
+      "Melden auf antiphishing.ch"
+    ]
+  },
+  {
+    "id": 9,
+    "kanal": "SMS",
+    "absender": "Paketdienst",
+    "zeit": "Gestern, 17:40",
+    "text": "Ihre Sendung 99.60.123456.78901234 wird morgen zwischen 10:00 und 13:00 Uhr zugestellt. Sie müssen nichts tun.",
+    "link": null,
+    "istPhishing": false,
+    "merkmale": [
+      {
+        "titel": "Bekannter Absender",
+        "text": "Die SMS kommt vom Paketdienst selbst und nicht von einer fremden Handynummer."
+      },
+      {
+        "titel": "Kein Zahlungsaufruf",
+        "text": "Du sollst nichts bezahlen und keine Daten eingeben."
+      },
+      {
+        "titel": "Kein Link",
+        "text": "Die Nachricht will dich nicht auf eine fremde Webseite locken."
+      }
+    ],
+    "reaktion": [
+      "Nichts tun, die Nachricht ist harmlos",
+      "Sendung bei Bedarf in der offiziellen App des Paketdiensts prüfen"
+    ]
+  }
+]
