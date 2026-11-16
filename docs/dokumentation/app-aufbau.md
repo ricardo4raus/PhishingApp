@@ -278,6 +278,8 @@ Hauptknöpfen dunkel, dort passt #F46036. Geprüft am 16.11.2026.
   Im dunklen Modus waren die Fragezeichen mit 15 % fast gleich dunkel wie die Karten, und ein dunkelblauer Schatten
   ist auf dunklem Hintergrund unsichtbar. Darum sind dort die Fragezeichen heller und der Schatten schwarz und stärker,
   so heben sich die Karten von den Fragezeichen ab.
+- Die Illustration (Beispielnachrichten und Fragezeichen) lässt sich nicht markieren (`user-select: none`, für Safari
+  zusätzlich `-webkit-user-select`). Sie ist nur Dekoration. Titel, Einleitung und Chips links bleiben markierbar.
 - Desktop: Titel und Beispielnachrichten oben bündig (`.inhalt--start`).
 - `#app` hat `overflow-x: clip`, damit die grossen Fragezeichen nie seitliches Scrollen auslösen.
 

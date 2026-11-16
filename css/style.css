@@ -997,6 +997,8 @@ button {
 
 .start__illustration {
   order: -1;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .illustration {
