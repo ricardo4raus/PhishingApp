@@ -266,7 +266,18 @@ Hauptknöpfen dunkel, dort passt #F46036. Geprüft am 16.11.2026.
 ## Startseite
 
 - Links: Titel «Erkennst du den Fake?», Einleitung, Chips (Anzahl Situationen, Dauer, «mit Erklärung»), Knopf «Training starten».
-- Rechts (Handy: oben): drei Beispielnachrichten (SMS, E-Mail, Instagram) als Karten, leicht gekippt. Auf dem Handy nur die E-Mail.
+- Rechts (Handy: oben): drei Beispielnachrichten (SMS, E-Mail, Instagram), gestaltet wie Benachrichtigungen auf dem
+  Handy: links ein App-Symbol, daneben Absender (fett) und Zeit, darunter der Text. Leicht gekippt. Auf dem Handy nur die E-Mail.
+- App-Symbole sind neutrale Lucide-Icons auf farbigen Flächen, keine echten Logos: SMS = eckige Sprechblase auf Grün,
+  E-Mail = Briefumschlag auf Blau, Instagram = Kamera auf dem Farbverlauf, der auch beim Instagram-Profilbild verwendet
+  wird. Bei SMS bewusst die eckige Sprechblase, weil eine runde Sprechblase auf Grün wie das WhatsApp-Logo aussieht.
+
+| Variable | Wert (hell und dunkel) |
+|---|---|
+| `--farbe-app-symbol` (Icon) | #FFFFFF |
+| `--farbe-app-sms` | #24A148 |
+| `--farbe-app-email` | #2F6FE4 |
+| `--verlauf-instagram` (auch Profilbild-Ring) | Verlauf #F9CE34 → #EE2A7B → #6228D7 |
 - Hinter den Karten stehen grosse, blasse Fragezeichen (`.illustration__fragezeichen`, dekorativ und für Screenreader
   ausgeblendet). Farbe und Schatten der Karten sind Variablen je Farbschema:
 
@@ -291,6 +302,7 @@ Hauptknöpfen dunkel, dort passt #F46036. Geprüft am 16.11.2026.
 | Start | Hellblaue Box mit «?»-Kreis um die Beispielnachrichten | grosse, blasse Fragezeichen hinter den Nachrichten | Gestaltungsentscheid, ruhigere Startseite |
 | Start | Titel senkrecht zur Grafik zentriert | oben bündig mit den Beispielnachrichten | Gestaltungsentscheid |
 | Start | Auswahl der Schwierigkeit, Link «Woran erkenne ich Phishing?» | nicht vorhanden | Kann-Funktionen, noch nicht umgesetzt |
+| Start | Beispielnachrichten als Karten mit «SMS · Absender» | Benachrichtigungen mit App-Symbol, Absender als Titel | Gestaltungsentscheid, wirkt wie auf dem Handy |
 | Alle | – | Schalter für Hell-/Dunkelmodus oben rechts | Wunsch, das Farbschema selbst wählen zu können |
 | Situation | Kontext fehlt | Kontext-Box über der Nachricht | Echte Nachrichten wie der Login-Code sind ohne Kontext nicht lösbar |
 | Situation | Link ohne Prüfung | Vorschauzeile mit dem echten Link-Ziel | Link-Prüfung als Lerninhalt |
