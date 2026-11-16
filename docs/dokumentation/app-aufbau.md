@@ -185,13 +185,16 @@ Alle Text-Hintergrund-Kombinationen erfüllen den Kontrast-Standard WCAG AA (min
 - Der Farbwechsel ist animiert (`transition: background-color 250ms, color 250ms`), bei «Bewegung reduzieren» sofort.
 - Nur bei Geräten mit Maus (`@media (hover: hover)`), damit auf dem Handy nach dem Antippen nichts orange hängen bleibt.
 
-| Variable | Hell und dunkel | Kontrast |
+| Variable | Hell | Dunkel |
 |---|---|---|
-| `--farbe-orange` (Hintergrund beim Darüberfahren) | #F46036 | – |
-| `--farbe-text-auf-orange` (Schrift beim Darüberfahren) | #0B0F1A | 6.0 : 1 |
+| `--farbe-orange` (Hintergrund beim Darüberfahren) | #DA390C | #F46036 |
+| `--farbe-text-auf-orange` (Schrift beim Darüberfahren) | #FFFFFF | #0B0F1A |
+| Kontrast | 4.6 : 1 | 6.0 : 1 |
 
-Weisse Schrift auf Orange hätte nur 3.2 : 1 und erfüllt WCAG AA nicht (die Knopfschrift mit 18 px fett gilt nicht als
-grosse Schrift). Darum ist die Schrift beim Darüberfahren dunkel, geprüft am 16.11.2026.
+Im hellen Modus bleibt die Schrift weiss, wie auf dem blauen Knopf. Weiss auf #F46036 hätte nur 3.2 : 1 und erfüllt
+WCAG AA nicht (die Knopfschrift mit 18 px fett gilt nicht als grosse Schrift). Darum ist das Orange im hellen Modus
+dunkler: gleicher Farbton (13°) und gleiche Sättigung, nur weniger hell. Im dunklen Modus ist die Schrift auf allen
+Hauptknöpfen dunkel, dort passt #F46036. Geprüft am 16.11.2026.
 
 ## Testen
 

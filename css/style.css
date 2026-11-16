@@ -17,8 +17,8 @@
   --farbe-richtig-hell: #e6f5ec;
   --farbe-falsch: #b4441a;
   --farbe-falsch-hell: #fcede6;
-  --farbe-orange: #f46036;
-  --farbe-text-auf-orange: #0b0f1a;
+  --farbe-orange: #da390c;
+  --farbe-text-auf-orange: #ffffff;
 
   --farbe-sms-blase: #e9e9eb;
   --farbe-email-knopf: #374151;
@@ -56,6 +56,8 @@
   --farbe-richtig-hell: #11301f;
   --farbe-falsch: #fdba74;
   --farbe-falsch-hell: #3a2414;
+  --farbe-orange: #f46036;
+  --farbe-text-auf-orange: #0b0f1a;
 
   --farbe-sms-blase: #262e42;
   --farbe-email-knopf: #d1d5db;
