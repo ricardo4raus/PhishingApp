@@ -270,6 +270,9 @@ Hauptknöpfen dunkel, dort passt #F46036. Geprüft am 16.11.2026.
   Handy: links ein App-Symbol, daneben Absender (fett) und Zeit, darunter der Text. Leicht gekippt. Auf dem Handy nur die E-Mail.
 - Schrift wie bei echten Benachrichtigungen: Titel 15 px fett (700), Text 14 px normal (400), Zeit 13 px gedämpft.
   So unterscheiden sich Titel und Text deutlich.
+- Ausrichtung: Titel und Text stehen zusammen in `.vorschau__inhalt`. Das App-Symbol ist senkrecht zu diesem Textblock
+  zentriert (`align-self: center`). Ist der Text niedriger als das Symbol, beginnen beide oben. Die Kopfzeile hat eine
+  engere Zeilenhöhe (1.3), damit über dem Titel kein zusätzlicher Leerraum entsteht.
 - App-Symbole sind neutrale Lucide-Icons auf farbigen Flächen, keine echten Logos: SMS = eckige Sprechblase auf Grün,
   E-Mail = Briefumschlag auf Blau, Instagram = Kamera auf dem Farbverlauf, der auch beim Instagram-Profilbild verwendet
   wird. Bei SMS bewusst die eckige Sprechblase, weil eine runde Sprechblase auf Grün wie das WhatsApp-Logo aussieht.
