@@ -327,6 +327,58 @@ button {
   color: var(--farbe-primaer);
 }
 
+/* ---------- Ergebnis nach einer Antwort (richtig oder falsch) ---------- */
+
+.ergebnis {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border-radius: var(--radius-karte);
+}
+
+.ergebnis--richtig {
+  background-color: var(--farbe-richtig-hell);
+  color: var(--farbe-richtig);
+}
+
+.ergebnis--falsch {
+  background-color: var(--farbe-falsch-hell);
+  color: var(--farbe-falsch);
+}
+
+.ergebnis__symbol {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+
+.ergebnis__symbol .icon {
+  width: 26px;
+  height: 26px;
+  color: var(--farbe-hintergrund);
+  stroke-width: 3;
+}
+
+.ergebnis--richtig .ergebnis__icon-falsch,
+.ergebnis--falsch .ergebnis__icon-richtig {
+  display: none;
+}
+
+.ergebnis__titel {
+  font-size: 1.375rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.ergebnis__text {
+  font-weight: 600;
+}
+
 /* ---------- Erklärung (Merkmale und richtige Reaktion) ---------- */
 
 .erklaerung {
@@ -1012,7 +1064,19 @@ button {
   display: block;
 }
 
-.situation__nachricht > * {
+.situation__nachricht-bereich {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inhalt--auswertung .situation__nachricht-bereich {
+  display: none;
+}
+
+.situation__nachricht > *,
+.situation__ergebnis,
+.situation__auswertung {
   animation: einblenden 250ms ease-out;
 }
 
@@ -1034,6 +1098,10 @@ button {
   align-items: center;
   gap: 8px;
   color: var(--farbe-text-gedaempft);
+}
+
+.situation__auswertung .erklaerung__titel {
+  font-size: 1.375rem;
 }
 
 
@@ -1210,6 +1278,8 @@ button {
   }
 
   .situation__nachricht > *,
+  .situation__ergebnis,
+  .situation__auswertung,
   .resultat__ring-wert {
     animation: none;
   }
@@ -1334,6 +1404,14 @@ button {
 
   .situation__frage {
     font-size: 2.5rem;
+  }
+
+  .inhalt--auswertung .situation__nachricht-bereich {
+    display: flex;
+  }
+
+  .situation__auswertung .aktionen {
+    justify-content: flex-end;
   }
 
   /* Resultat */

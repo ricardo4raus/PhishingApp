@@ -1,6 +1,6 @@
 # Aufbau der App (aktueller Stand)
 
-Autor: Ricardo Kraus · Stand: 09.11.2026
+Autor: Ricardo Kraus · Stand: 16.11.2026
 
 Diese Datei beschreibt immer den **aktuellen** Stand der App. Sie wird bei jeder Änderung nachgeführt.
 Was wann geändert wurde, steht im [Änderungsprotokoll](aenderungsprotokoll.md).
@@ -18,21 +18,20 @@ Was wann geändert wurde, steht im [Änderungsprotokoll](aenderungsprotokoll.md)
 | Hell- und Dunkelmodus: zuerst nach Geräteeinstellung, mit Schalter oben rechts umschaltbar, Wahl wird gespeichert | umgesetzt |
 | Handy- und Desktop-Layout | umgesetzt |
 | Fehlermeldung, wenn die Situationen nicht geladen werden können | umgesetzt |
-| Auswertung mit Erklärung der Merkmale und der richtigen Reaktion | **noch offen** (Daten sind schon vorhanden) |
+| Auswertung nach jeder Antwort: richtig/falsch, Erklärung der Merkmale und der richtigen Reaktion, «Weiter» | umgesetzt |
 | Resultat am Ende: Ring mit Punktzahl, Bewertung, Phishing erkannt x von y, Echte erkannt x von y, Tipps aus den Fehlern, «Nochmals spielen» | umgesetzt |
 | «Deine Antworten»: alle Situationen nochmals ansehen, richtig/falsch, bei Fehlern Merkmale und richtige Reaktion | umgesetzt |
 | Tipps-Seite «Woran erkenne ich Phishing?» (Kann-Funktion) | **noch offen**, darum kein Knopf «Tipps ansehen» |
-
-Solange die Auswertung fehlt, springt die App nach einer Antwort direkt zur nächsten Situation.
-Nach der letzten Situation erscheint das Resultat.
+| Zufälliges Verhältnis Phishing/echt pro Durchgang | **geplant** (Entscheid vom 16.11.2026, siehe [08](08_auswertung-nach-jeder-antwort.md#entscheid-zufälliges-verhältnis-phishingecht)) |
 
 ## Ablauf im Code
 
 ```
 Seite lädt → ladeSituationen() → zeigeStart()
 «Training starten» → starteTraining() → erstelleSituationBildschirm() (einmal) → zeigeSituation()
-«Echt» / «Phishing» → werteAntwortAus() → zeigeNaechsteSituation()
-                       → weitere Situation? Ja: zeigeSituation() / Nein: zeigeResultat()
+«Echt» / «Phishing» → werteAntwortAus() → zeigeAuswertung()
+«Weiter» → zeigeNaechsteSituation()
+           → weitere Situation? Ja: zeigeSituation() / Nein: zeigeResultat()
 «Nochmals spielen» → zeigeStart()
 «Beenden» → Rückfrage → zeigeStart()
 Schalter oben rechts → wechsleFarbschema() (in farbschema.js, unabhängig vom Ablauf)
@@ -48,6 +47,12 @@ Fortschritt, Punkte, Kanal, Kontext, Nachricht und Link-Vorschau ersetzt. Dadurc
 animiert weiter (`transition: width 400ms`), und die neue Nachricht wird kurz eingeblendet.
 Bei «Bewegung reduzieren» (`prefers-reduced-motion`) sind alle Animationen aus.
 
+**Auswertung als zweiter Schritt im Situationsbildschirm:** Nach einer Antwort ruft `zeigeAuswertung()` die Funktion
+`aktualisiereAuswertung()` auf. Diese blendet Frage und Knöpfe aus (`hidden`) und zeigt stattdessen das Ergebnis,
+die Erklärung (`erstelleErklaerung`) und den Knopf «Weiter». Die Punkte in der Kopfzeile werden sofort nachgeführt.
+`aktualisiereSituation()` schaltet bei der nächsten Situation wieder auf den Schritt «Entscheidung» zurück
+(`zeigeSchritt()`). Die Auswertung erscheint nach **jeder** Antwort, auch bei richtigen.
+
 ## Dateien
 
 | Datei | Aufgabe |
@@ -60,11 +65,11 @@ Bei «Bewegung reduzieren» (`prefers-reduced-motion`) sind alle Animationen aus
 | `js/daten.js` | Lädt die Situationen mit `fetch` (einzige Stelle, an der Daten geladen werden) |
 | `js/vorlagen.js` | Erstellt eine Kopie einer Vorlage aus `index.html` und gibt ihr Wurzelelement zurück |
 | `js/bildschirme/start.js` | Startbildschirm |
-| `js/bildschirme/situation.js` | Situationsbildschirm: `erstelleSituationBildschirm()` (einmal) und `aktualisiereSituation()` (pro Situation), wählt die passende Nachrichten-Komponente nach Kanal |
+| `js/bildschirme/situation.js` | Situationsbildschirm: `erstelleSituationBildschirm()` (einmal), `aktualisiereSituation()` (Schritt «Entscheidung», pro Situation) und `aktualisiereAuswertung()` (Schritt «Auswertung», nach jeder Antwort) |
 | `js/bildschirme/resultat.js` | Resultat-Bildschirm: Bewertung, Ring, Statistik, Tipps, Liste «Deine Antworten» |
 | `js/komponenten/nachricht.js` | Wählt die Darstellung nach Kanal (`NACHRICHT_PRO_KANAL`), verwendet von Situation und Resultat |
 | `js/komponenten/kontext.js` | Zeigt oder versteckt die Kontext-Box |
-| `js/komponenten/erklaerung.js` | Merkmale («Woran du es erkennst») und richtige Reaktion |
+| `js/komponenten/erklaerung.js` | Merkmale («Woran du es erkennst») und richtige Reaktion, verwendet in der Auswertung und im Resultat |
 | `js/komponenten/antwort-eintrag.js` | Ein aufklappbarer Eintrag in «Deine Antworten» |
 | `js/komponenten/sms.js` | Darstellung einer SMS |
 | `js/komponenten/email.js` | Darstellung einer E-Mail |
@@ -179,6 +184,7 @@ Alle Text-Hintergrund-Kombinationen erfüllen den Kontrast-Standard WCAG AA (min
   nicht per Doppelklick, sonst lädt `fetch` die JSON-Datei nicht.
 - Getestet: Handy (390 px) und Desktop (1440 px), hell und dunkel, alle 10 Situationen, Link-Vorschau mit Maus, Antippen und Tastatur.
 - Getestet: kein Neuaufbau zwischen Situationen, keine Layout-Verschiebung beim Darüberfahren, Fortschrittsbalken 10 % bis 100 % animiert.
+- Getestet (16.11.2026): Auswertung nach allen 10 Situationen, richtig und falsch, Handy und Desktop, hell und dunkel (Details in [08](08_auswertung-nach-jeder-antwort.md#tests)).
 
 ## Layout des Situationsbildschirms
 
@@ -187,6 +193,18 @@ Alle Text-Hintergrund-Kombinationen erfüllen den Kontrast-Standard WCAG AA (min
   (`position: sticky`) und stehen bei jeder Situation an derselben Stelle.
 - Fortschrittsbalken: `<div role="progressbar">` mit `aria-valuenow` / `aria-valuemax`, weil sich `<progress>` nicht
   in allen Browsern flüssig animieren lässt.
+
+## Auswertung (Schritt nach der Antwort)
+
+- Ergebnis-Banner (`.ergebnis`): «Richtig erkannt!» oder «Leider falsch», darunter «Diese Nachricht ist Phishing.» bzw.
+  «Diese Nachricht ist echt.». Richtig/falsch über Symbol (✓ / ✗), Text und Farbe (`.ergebnis--richtig` / `--falsch`).
+- Darunter die Erklärung: «Woran du es erkennst» (bei echten Nachrichten «Darum ist die Nachricht echt») mit den
+  nummerierten Merkmalen und «So reagierst du richtig».
+- Knopf «Weiter», bei der letzten Situation «Zum Resultat».
+- Handy: Banner, Erklärung, Knopf unten (wie Wireframe). Die Nachricht ist in diesem Schritt ausgeblendet
+  (`.inhalt--auswertung .situation__nachricht-bereich`).
+- Desktop: links Banner und Nachricht mit Link-Prüfung, rechts Erklärung und «Weiter» rechtsbündig (wie Wireframe).
+- Banner und Erklärung werden kurz eingeblendet, bei «Bewegung reduzieren» ohne Animation.
 
 ## Resultat-Bildschirm
 
@@ -219,7 +237,10 @@ Alle Text-Hintergrund-Kombinationen erfüllen den Kontrast-Standard WCAG AA (min
 - Neuer Bildschirm: Die Hauptüberschrift (`h1` mit `tabindex="-1"`) bekommt den Fokus, ohne zu scrollen.
 - Neue Situation: Die Nachricht (`.situation__nachricht`, `tabindex="-1"`) bekommt den Fokus.
   Screenreader lesen so die neue Nachricht vor, und eine gedrückte Enter-Taste beantwortet keine weiteren Situationen.
-- Doppelklick auf «Echt» oder «Phishing»: Der zweite Klick (`event.detail > 1`) wird ignoriert.
+- Auswertung: Der Titel im Ergebnis-Banner (`.ergebnis__titel`, `h2` mit `tabindex="-1"`) bekommt den Fokus.
+  Screenreader lesen so sofort «Richtig erkannt!» oder «Leider falsch» vor.
+- Doppelklick auf «Echt», «Phishing» oder «Weiter»: Der zweite Klick (`event.detail > 1`) wird ignoriert
+  (`nurBeimErstenKlick()`). Sonst würde der zweite Klick die Auswertung überspringen oder die nächste Situation beantworten.
 - Hover-Farben der Antwort-Knöpfe nur bei Geräten mit Maus (`@media (hover: hover)`), damit auf dem Handy nichts eingefärbt hängen bleibt.
 - `.nur-desktop`: auf dem Handy nur optisch versteckt, für Screenreader weiterhin lesbar.
 - Daten: `ladeSituationen()` wirft einen Fehler, wenn die Datei keine Situationen enthält → Fehlermeldung.
@@ -245,7 +266,10 @@ Alle Text-Hintergrund-Kombinationen erfüllen den Kontrast-Standard WCAG AA (min
 | Situation | Kontext fehlt | Kontext-Box über der Nachricht | Echte Nachrichten wie der Login-Code sind ohne Kontext nicht lösbar |
 | Situation | Link ohne Prüfung | Vorschauzeile mit dem echten Link-Ziel | Link-Prüfung als Lerninhalt |
 | Situation (Desktop) | Frage und Knöpfe senkrecht zentriert | oben ausgerichtet, beim Scrollen sichtbar | Knöpfe springen sonst bei jeder Situation |
-| Erklärung | eigener Bildschirm nach jeder Antwort | noch nicht umgesetzt, Erklärung im Resultat bei «Deine Antworten» | in Arbeit |
+| Erklärung | eigener Bildschirm nach jeder Antwort | zweiter Schritt im Situationsbildschirm, sieht gleich aus | Kopfzeile und Fortschrittsbalken bleiben dieselben Elemente (kein Neuaufbau) |
+| Erklärung (Desktop) | Merkmale in der Nachricht mit Nummern 1–3 markiert | Nachricht ohne Markierungen | Bräuchte in den Daten die genaue Textstelle jedes Merkmals; offener Punkt |
+| Erklärung | Symbol vor jeder Reaktion (Verbot, Papierkorb, Fahne) | Aufzählungspunkte | Die Reaktionen sind freier Text, ein passendes Symbol lässt sich nicht zuverlässig zuordnen |
+| Erklärung | «Weiter» auch bei der letzten Situation | «Zum Resultat» bei der letzten Situation | Man weiss, was als Nächstes kommt |
 | Resultat | Knopf «Tipps ansehen» | nicht vorhanden | Tipps-Seite ist eine Kann-Funktion |
 | Resultat | – | Liste «Deine Antworten» mit allen Situationen | Wunsch, die Situationen am Ende nochmals anzusehen |
 | Resultat (Handy) | ohne Logo-Kopfzeile | mit Logo und Farbschema-Schalter | Schalter soll auf jedem Bildschirm erreichbar sein |

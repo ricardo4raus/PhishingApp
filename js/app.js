@@ -1,7 +1,7 @@
 import { ladeSituationen } from "./daten.js";
 import { erstelleAusVorlage } from "./vorlagen.js";
 import { erstelleStartBildschirm } from "./bildschirme/start.js";
-import { erstelleSituationBildschirm, aktualisiereSituation } from "./bildschirme/situation.js";
+import { erstelleSituationBildschirm, aktualisiereSituation, aktualisiereAuswertung } from "./bildschirme/situation.js";
 import { erstelleResultatBildschirm } from "./bildschirme/resultat.js";
 
 const app = document.querySelector("#app");
@@ -37,6 +37,7 @@ function starteTraining() {
 
   situationsBildschirm = erstelleSituationBildschirm({
     beiAntwort: werteAntwortAus,
+    beiWeiter: zeigeNaechsteSituation,
     beimBeenden: beendeTraining,
   });
   zeige(situationsBildschirm);
@@ -59,12 +60,23 @@ function werteAntwortAus(antwort) {
   const richtigeAntwort = situation.istPhishing ? "phishing" : "echt";
   const istRichtig = antwort === richtigeAntwort;
 
-  zustand.antworten.push({ situation, antwort, istRichtig });
+  const neueAntwort = { situation, antwort, istRichtig };
+  zustand.antworten.push(neueAntwort);
   if (istRichtig) {
     zustand.punkte += 1;
   }
 
-  zeigeNaechsteSituation();
+  zeigeAuswertung(neueAntwort);
+}
+
+function zeigeAuswertung(antwort) {
+  aktualisiereAuswertung(situationsBildschirm, {
+    antwort,
+    punkte: zustand.punkte,
+    istLetzteSituation: zustand.index === zustand.situationen.length - 1,
+  });
+  window.scrollTo(0, 0);
+  situationsBildschirm.querySelector(".ergebnis__titel").focus({ preventScroll: true });
 }
 
 function zeigeNaechsteSituation() {
