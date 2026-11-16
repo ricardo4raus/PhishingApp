@@ -17,6 +17,8 @@
   --farbe-richtig-hell: #e6f5ec;
   --farbe-falsch: #b4441a;
   --farbe-falsch-hell: #fcede6;
+  --farbe-orange: #f46036;
+  --farbe-text-auf-orange: #0b0f1a;
 
   --farbe-sms-blase: #e9e9eb;
   --farbe-email-knopf: #374151;
@@ -225,6 +227,14 @@ button {
   width: 100%;
   background-color: var(--farbe-primaer);
   color: var(--farbe-text-auf-primaer);
+  transition: background-color 250ms ease, color 250ms ease;
+}
+
+@media (hover: hover) {
+  .button--primaer:hover {
+    background-color: var(--farbe-orange);
+    color: var(--farbe-text-auf-orange);
+  }
 }
 
 .button--klein {
@@ -1272,6 +1282,7 @@ button {
 
 @media (prefers-reduced-motion: reduce) {
   .fortschritt__balken,
+  .button--primaer,
   .linkvorschau,
   .antwort-eintrag__pfeil {
     transition: none;

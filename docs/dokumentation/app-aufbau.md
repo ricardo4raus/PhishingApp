@@ -178,6 +178,21 @@ Telefonnummern: reservierte Fiktiv-Nummern (+44 7700 900xxx).
 
 Alle Text-Hintergrund-Kombinationen erfüllen den Kontrast-Standard WCAG AA (mind. 4.5 : 1), geprüft am 09.11.2026.
 
+## Hauptknöpfe
+
+- Die blauen Hauptknöpfe (`.button--primaer`: «Training starten», «Weiter» / «Zum Resultat», «Nochmals spielen»)
+  werden beim Darüberfahren mit der Maus orange. So sieht man, dass der Knopf reagiert.
+- Der Farbwechsel ist animiert (`transition: background-color 250ms, color 250ms`), bei «Bewegung reduzieren» sofort.
+- Nur bei Geräten mit Maus (`@media (hover: hover)`), damit auf dem Handy nach dem Antippen nichts orange hängen bleibt.
+
+| Variable | Hell und dunkel | Kontrast |
+|---|---|---|
+| `--farbe-orange` (Hintergrund beim Darüberfahren) | #F46036 | – |
+| `--farbe-text-auf-orange` (Schrift beim Darüberfahren) | #0B0F1A | 6.0 : 1 |
+
+Weisse Schrift auf Orange hätte nur 3.2 : 1 und erfüllt WCAG AA nicht (die Knopfschrift mit 18 px fett gilt nicht als
+grosse Schrift). Darum ist die Schrift beim Darüberfahren dunkel, geprüft am 16.11.2026.
+
 ## Testen
 
 - Lokal immer über einen Webserver öffnen (VS Code «Live Server» oder `python -m http.server`),
