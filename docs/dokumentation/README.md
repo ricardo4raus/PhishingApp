@@ -26,6 +26,7 @@ Sie dient als Nachschlagewerk und als Grundlage, um die Begleitdokumentation (Wo
 | [06_antworten-im-resultat.md](06_antworten-im-resultat.md) | Alle Antworten im Resultat ansehen, Erklärung bei Fehlern | 4.3 Umsetzung, 5 Produkt, 4.5 Tests |
 | [07_code-review.md](07_code-review.md) | Code-Review: gefundene Fehler, Barrierefreiheit, Aufräumen, Texte | 4.5 Tests und Überarbeitung |
 | [08_auswertung-nach-jeder-antwort.md](08_auswertung-nach-jeder-antwort.md) | Auswertung mit Erklärung nach jeder Antwort, Entscheid zum zufälligen Verhältnis Phishing/echt | 4.3 Umsetzung, 5 Produkt, 4.5 Tests |
+| [09_planung-mehr-situationen.md](09_planung-mehr-situationen.md) | Planung (noch nicht umgesetzt): grosse Sammlung mit zufälliger Auswahl, Berechnungen, Aufwand, Frage zu echten Logos | 6.2 Reflexion, Ausblick |
 
 ## Regeln für diese Dokumentation
 

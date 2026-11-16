@@ -35,4 +35,6 @@ Autor: Ricardo Kraus · Format wie im Quellenverzeichnis der Begleitdokumentatio
 | Hover nur bei Geräten mit Maus (`@media (hover)`) | https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/hover | 09.11.2026 |
 | Beschreibung für Screenreader (`aria-describedby`) | https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-describedby | 09.11.2026 |
 | Markieren verhindern (`user-select`) | https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/user-select | 16.11.2026 |
+| Zufallszahlen (`Math.random()`) | https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random | 16.11.2026 |
+| Mischen mit Fisher-Yates | https://javascript.info/task/shuffle | 16.11.2026 |
 | Animierte Übergänge (`transition`) | https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/transition | 16.11.2026 |

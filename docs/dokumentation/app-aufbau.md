@@ -22,7 +22,7 @@ Was wann geändert wurde, steht im [Änderungsprotokoll](aenderungsprotokoll.md)
 | Resultat am Ende: Ring mit Punktzahl, Bewertung, Phishing erkannt x von y, Echte erkannt x von y, Tipps aus den Fehlern, «Nochmals spielen» | umgesetzt |
 | «Deine Antworten»: alle Situationen nochmals ansehen, richtig/falsch, bei Fehlern Merkmale und richtige Reaktion | umgesetzt |
 | Tipps-Seite «Woran erkenne ich Phishing?» (Kann-Funktion) | **noch offen**, darum kein Knopf «Tipps ansehen» |
-| Zufälliges Verhältnis Phishing/echt pro Durchgang | **geplant** (Entscheid vom 16.11.2026, siehe [08](08_auswertung-nach-jeder-antwort.md#entscheid-zufälliges-verhältnis-phishingecht)) |
+| Zufälliges Verhältnis Phishing/echt pro Durchgang, grössere Sammlung mit zufälliger Auswahl von 10 Situationen | **geplant** (Entscheid vom 16.11.2026 in [08](08_auswertung-nach-jeder-antwort.md#entscheid-zufälliges-verhältnis-phishingecht), Planung in [09](09_planung-mehr-situationen.md)) |
 
 ## Ablauf im Code
 
