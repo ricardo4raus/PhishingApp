@@ -267,8 +267,17 @@ Hauptknöpfen dunkel, dort passt #F46036. Geprüft am 16.11.2026.
 
 - Links: Titel «Erkennst du den Fake?», Einleitung, Chips (Anzahl Situationen, Dauer, «mit Erklärung»), Knopf «Training starten».
 - Rechts (Handy: oben): drei Beispielnachrichten (SMS, E-Mail, Instagram) als Karten, leicht gekippt. Auf dem Handy nur die E-Mail.
-- Hinter den Karten stehen grosse, blasse Fragezeichen (`.illustration__fragezeichen`, Lila mit 15 % Deckkraft,
-  dekorativ und für Screenreader ausgeblendet).
+- Hinter den Karten stehen grosse, blasse Fragezeichen (`.illustration__fragezeichen`, dekorativ und für Screenreader
+  ausgeblendet). Farbe und Schatten der Karten sind Variablen je Farbschema:
+
+| Variable | Hell | Dunkel |
+|---|---|---|
+| `--farbe-fragezeichen` | Lila #6E44D1 mit 15 % Deckkraft | Lila #B39BFF mit 30 % Deckkraft |
+| `--schatten-karte` (Beispielnachrichten) | `0 10px 30px`, Dunkelblau mit 8 % | `0 10px 30px`, Schwarz mit 60 % |
+
+  Im dunklen Modus waren die Fragezeichen mit 15 % fast gleich dunkel wie die Karten, und ein dunkelblauer Schatten
+  ist auf dunklem Hintergrund unsichtbar. Darum sind dort die Fragezeichen heller und der Schatten schwarz und stärker,
+  so heben sich die Karten von den Fragezeichen ab.
 - Desktop: Titel und Beispielnachrichten oben bündig (`.inhalt--start`).
 - `#app` hat `overflow-x: clip`, damit die grossen Fragezeichen nie seitliches Scrollen auslösen.
 
