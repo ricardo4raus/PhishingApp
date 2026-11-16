@@ -268,6 +268,8 @@ Hauptknöpfen dunkel, dort passt #F46036. Geprüft am 16.11.2026.
 - Links: Titel «Erkennst du den Fake?», Einleitung, Chips (Anzahl Situationen, Dauer, «mit Erklärung»), Knopf «Training starten».
 - Rechts (Handy: oben): drei Beispielnachrichten (SMS, E-Mail, Instagram), gestaltet wie Benachrichtigungen auf dem
   Handy: links ein App-Symbol, daneben Absender (fett) und Zeit, darunter der Text. Leicht gekippt. Auf dem Handy nur die E-Mail.
+- Schrift wie bei echten Benachrichtigungen: Titel 15 px fett (700), Text 14 px normal (400), Zeit 13 px gedämpft.
+  So unterscheiden sich Titel und Text deutlich.
 - App-Symbole sind neutrale Lucide-Icons auf farbigen Flächen, keine echten Logos: SMS = eckige Sprechblase auf Grün,
   E-Mail = Briefumschlag auf Blau, Instagram = Kamera auf dem Farbverlauf, der auch beim Instagram-Profilbild verwendet
   wird. Bei SMS bewusst die eckige Sprechblase, weil eine runde Sprechblase auf Grün wie das WhatsApp-Logo aussieht.

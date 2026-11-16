@@ -1086,7 +1086,7 @@ button {
   align-items: baseline;
   gap: 12px;
   color: var(--farbe-text-gedaempft);
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
 }
 
 .vorschau__titel {
@@ -1096,7 +1096,9 @@ button {
 }
 
 .vorschau__text {
-  font-weight: 500;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.4;
 }
 
 /* ========== Bildschirm: Situation ========== */

@@ -7,6 +7,7 @@ Details stehen in den verlinkten Dateien.
 
 | Datum | Änderung | Betroffene Dateien | Details |
 |---|---|---|---|
+| 16.11.2026 | Startseite: Schrift der Benachrichtigungen realistischer. Titel fett (15 px, 700), Text normal und kleiner (14 px, 400), Zeit 13 px. Vorher war der Text grösser und fast so kräftig wie der Titel. | `css/style.css` | [app-aufbau](app-aufbau.md#startseite) |
 | 16.11.2026 | Hover der Hauptknöpfe ohne Animation: Das Orange erscheint sofort, die Animation (250 ms) wirkte träge. Farben unverändert. Commit `cac2227`. | `css/style.css` | [app-aufbau](app-aufbau.md#hauptknöpfe) |
 | 16.11.2026 | Startseite: Beispielnachrichten sehen aus wie Handy-Benachrichtigungen, mit App-Symbol (SMS, E-Mail, Instagram; neutrale Icons, keine Logos), Absender als Titel, Zeit und Text. Instagram-Farbverlauf als gemeinsame Variable. Commit `4ef2540`. | `index.html`, `css/style.css` | [app-aufbau](app-aufbau.md#startseite) |
 | 16.11.2026 | Startseite: Beispielnachrichten und Fragezeichen rechts lassen sich nicht mehr markieren (`user-select: none`), weil sie nur Dekoration sind. Der Text links bleibt markierbar. Commit `14180f3`. | `css/style.css` | [app-aufbau](app-aufbau.md#startseite) |
