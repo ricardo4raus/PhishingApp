@@ -182,7 +182,7 @@ Alle Text-Hintergrund-Kombinationen erfüllen den Kontrast-Standard WCAG AA (min
 
 - Die blauen Hauptknöpfe (`.button--primaer`: «Training starten», «Weiter» / «Zum Resultat», «Nochmals spielen»)
   werden beim Darüberfahren mit der Maus orange. So sieht man, dass der Knopf reagiert.
-- Der Farbwechsel ist animiert (`transition: background-color 250ms, color 250ms`), bei «Bewegung reduzieren» sofort.
+- Der Farbwechsel geschieht sofort, ohne Animation. Eine Animation (250 ms) wurde getestet, wirkte aber träge.
 - Nur bei Geräten mit Maus (`@media (hover: hover)`), damit auf dem Handy nach dem Antippen nichts orange hängen bleibt.
 
 | Variable | Hell | Dunkel |

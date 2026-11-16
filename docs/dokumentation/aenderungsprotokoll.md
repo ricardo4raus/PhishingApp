@@ -7,7 +7,8 @@ Details stehen in den verlinkten Dateien.
 
 | Datum | Änderung | Betroffene Dateien | Details |
 |---|---|---|---|
-| 16.11.2026 | Startseite: Beispielnachrichten sehen aus wie Handy-Benachrichtigungen, mit App-Symbol (SMS, E-Mail, Instagram; neutrale Icons, keine Logos), Absender als Titel, Zeit und Text. Instagram-Farbverlauf als gemeinsame Variable. | `index.html`, `css/style.css` | [app-aufbau](app-aufbau.md#startseite) |
+| 16.11.2026 | Hover der Hauptknöpfe ohne Animation: Das Orange erscheint sofort, die Animation (250 ms) wirkte träge. Farben unverändert. | `css/style.css` | [app-aufbau](app-aufbau.md#hauptknöpfe) |
+| 16.11.2026 | Startseite: Beispielnachrichten sehen aus wie Handy-Benachrichtigungen, mit App-Symbol (SMS, E-Mail, Instagram; neutrale Icons, keine Logos), Absender als Titel, Zeit und Text. Instagram-Farbverlauf als gemeinsame Variable. Commit `4ef2540`. | `index.html`, `css/style.css` | [app-aufbau](app-aufbau.md#startseite) |
 | 16.11.2026 | Startseite: Beispielnachrichten und Fragezeichen rechts lassen sich nicht mehr markieren (`user-select: none`), weil sie nur Dekoration sind. Der Text links bleibt markierbar. Commit `14180f3`. | `css/style.css` | [app-aufbau](app-aufbau.md#startseite) |
 | 16.11.2026 | Startseite im dunklen Modus: Fragezeichen heller (30 % statt 15 % Deckkraft) und Beispielnachrichten mit sichtbarem Schatten (Schwarz 60 %), damit sich die Karten von den Fragezeichen abheben. Neue Variablen `--farbe-fragezeichen` und `--schatten-karte`, heller Modus unverändert. Commit `7ec0ffb`. | `css/style.css` | [app-aufbau](app-aufbau.md#startseite) |
 | 16.11.2026 | Hover der Hauptknöpfe im hellen Modus: Schrift bleibt weiss, dafür dunkleres Orange #DA390C (Kontrast 4.6 : 1). Im dunklen Modus unverändert #F46036 mit dunkler Schrift. Farben als Variablen je Farbschema. Commit `4feb36b`. | `css/style.css` | [app-aufbau](app-aufbau.md#hauptknöpfe) |

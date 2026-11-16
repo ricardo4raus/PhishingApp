@@ -238,7 +238,6 @@ button {
   width: 100%;
   background-color: var(--farbe-primaer);
   color: var(--farbe-text-auf-primaer);
-  transition: background-color 250ms ease, color 250ms ease;
 }
 
 @media (hover: hover) {
@@ -1330,7 +1329,6 @@ button {
 
 @media (prefers-reduced-motion: reduce) {
   .fortschritt__balken,
-  .button--primaer,
   .linkvorschau,
   .antwort-eintrag__pfeil {
     transition: none;
