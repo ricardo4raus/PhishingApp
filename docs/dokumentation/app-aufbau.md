@@ -265,7 +265,7 @@ Hauptknöpfen dunkel, dort passt #F46036. Geprüft am 16.11.2026.
 
 ## Startseite
 
-- Links: Titel «Erkennst du den Fake?», Einleitung, Chips (Anzahl Situationen, Dauer, «mit Erklärung»), Knopf «Training starten».
+- Links: Titel «Erkennst du den Fake?», Einleitung, Chips (Anzahl Situationen, Dauer), Knopf «Training starten».
 - Rechts (Handy: oben): drei Beispielnachrichten (SMS, E-Mail, Instagram), gestaltet wie Benachrichtigungen auf dem
   Handy: links ein App-Symbol, daneben Absender (fett) und Zeit, darunter der Text. Leicht gekippt. Auf dem Handy nur die E-Mail.
 - Schrift wie bei echten Benachrichtigungen: Titel 15 px fett (700), Text 14 px normal (400), Zeit 13 px gedämpft.
@@ -304,6 +304,7 @@ Hauptknöpfen dunkel, dort passt #F46036. Geprüft am 16.11.2026.
 | Bildschirm | Wireframe | Umsetzung | Grund |
 |---|---|---|---|
 | Start | Chip «Training gegen Phishing» über dem Titel | entfernt | Gestaltungsentscheid, Titel wirkt stärker |
+| Start | Chip «mit Erklärung» | entfernt | Gestaltungsentscheid; dass es eine Erklärung gibt, steht schon in der Einleitung |
 | Start | Hellblaue Box mit «?»-Kreis um die Beispielnachrichten | grosse, blasse Fragezeichen hinter den Nachrichten | Gestaltungsentscheid, ruhigere Startseite |
 | Start | Titel senkrecht zur Grafik zentriert | oben bündig mit den Beispielnachrichten | Gestaltungsentscheid |
 | Start | Auswahl der Schwierigkeit, Link «Woran erkenne ich Phishing?» | nicht vorhanden | Kann-Funktionen, noch nicht umgesetzt |
